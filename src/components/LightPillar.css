@@ -1,0 +1,15 @@
+/* src/components/LightPillar.css */
+/* keeps three canvas filling parent cleanly */
+:root {
+  --lp-canvas-z: 0;
+}
+
+.lightpillar-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute !important;
+  inset: 0;
+  z-index: var(--lp-canvas-z);
+  pointer-events: none;
+}
