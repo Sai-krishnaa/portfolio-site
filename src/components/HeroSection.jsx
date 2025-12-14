@@ -93,10 +93,12 @@ export function Navbar() {
 }
 
 /* ===================== SOCIAL PILL ===================== */
-function SocialPill({ icon, platform, username }) {
+function SocialPill({ icon, platform, username, url }) {
   return (
     <a
-      href="#"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       className="flex items-center gap-4 rounded-2xl bg-white px-4 py-3
                  shadow-[0_8px_20px_rgba(15,23,42,0.06)]
                  transition-all duration-200
@@ -105,7 +107,11 @@ function SocialPill({ icon, platform, username }) {
       {/* ICON */}
       <div className="w-10 h-10 rounded-full bg-white border border-gray-200
                       flex items-center justify-center">
-        <img src={icon} alt={platform} className="w-5 h-5 object-contain" />
+        <img
+          src={icon}
+          alt={platform}
+          className="w-5 h-5 object-contain"
+        />
       </div>
 
       {/* TEXT */}
@@ -207,10 +213,30 @@ export default function HeroSection() {
 
           {/* SOCIAL GRID */}
           <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            <SocialPill icon={linkedin} platform="LinkedIn" username="B Sai Krishna" url="https://www.linkedin.com/in/saikrishnacodes/"/>
-            <SocialPill icon={github} platform="GitHub" username="saikrishna" url="https://github.com/Sai-krishnaa"/>
-            <SocialPill icon={leetcode} platform="LeetCode" username="SaiKrishna" url="https://leetcode.com/u/Code-Sai/"/>
-            <SocialPill icon={hackerank} platform="HackerRank" username="saikrishna_dev" url="https://www.hackerrank.com/profile/saikrishna34326"/>
+            <SocialPill
+              icon={linkedin}
+              platform="LinkedIn"
+              username="B Sai Krishna"
+              url="https://www.linkedin.com/in/saikrishnacodes/"
+            />
+            <SocialPill
+              icon={github}
+              platform="GitHub"
+              username="saikrishna"
+              url="https://github.com/Sai-krishnaa"
+            />
+            <SocialPill
+              icon={leetcode}
+              platform="LeetCode"
+              username="SaiKrishna"
+              url="https://leetcode.com/u/Code-Sai/"
+            />
+            <SocialPill
+              icon={hackerank}
+              platform="HackerRank"
+              username="saikrishna_dev"
+              url="https://www.hackerrank.com/profile/saikrishna34326"
+            />
           </div>
         </section>
       </main>
