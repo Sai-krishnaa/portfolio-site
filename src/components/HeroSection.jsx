@@ -37,7 +37,13 @@ export function Navbar() {
                          flex items-center justify-center text-xl md:text-2xl
                          transition-transform duration-200 hover:scale-105"
             >
+               <span
+    className={`inline-block transition-transform duration-300 ${
+      menuOpen ? "rotate-180" : ""
+    }`}
+  >
               ↗
+              </span>
             </button>
           </div>
         </div>
