@@ -1,7 +1,11 @@
-// src/components/HeroSection.jsx
 import React, { useEffect, useState } from "react";
 import LightPillar from "./LightPillar";
 import flag from "../assets/flag.png";
+
+import linkedin from "../assets/linkedin.svg";
+import github from "../assets/github.svg";
+import leetcode from "../assets/leetcode.svg";
+import hackerank from "../assets/hackerank.svg";
 
 /* ===================== NAVBAR ===================== */
 export function Navbar() {
@@ -9,7 +13,6 @@ export function Navbar() {
 
   return (
     <>
-      {/* TOP NAVBAR */}
       <header className="w-full relative z-50 bg-[#f3f4f6]">
         <div className="w-[95%] mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
           <div className="text-2xl md:text-3xl font-bold tracking-tight">
@@ -25,34 +28,36 @@ export function Navbar() {
           </nav>
 
           <div className="flex items-center gap-3">
-            {/* Desktop Contact */}
-            <button className="hidden md:inline-flex px-6 py-2.5 rounded-full bg-black text-white hover:bg-white hover:text-black border border-transparent hover:border-black transition">
+            {/* Desktop CTA */}
+            <button className="hidden md:inline-flex px-6 py-2.5 rounded-full
+                               bg-black text-white border border-transparent
+                               transition hover:bg-white hover:text-black hover:border-black">
               Contact Us
             </button>
 
-            {/* 🔴 ARROW BUTTON (acts like hamburger on mobile) */}
+            {/* Arrow Hamburger */}
             <button
               onClick={() => setMenuOpen(prev => !prev)}
               className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-red-600 text-white
                          flex items-center justify-center text-xl md:text-2xl
                          transition-transform duration-200 hover:scale-105"
             >
-               <span
-    className={`inline-block transition-transform duration-300 ${
-      menuOpen ? "rotate-180" : ""
-    }`}
-  >
-              ↗
+              <span
+                className={`inline-block transition-transform duration-300 ${
+                  menuOpen ? "rotate-180" : ""
+                }`}
+              >
+                ↗
               </span>
             </button>
           </div>
         </div>
       </header>
 
-      {/* ================= MOBILE SLIDE MENU ================= */}
+      {/* ================= MOBILE MENU ================= */}
       <div
         className={`fixed inset-0 z-40 md:hidden transition-transform duration-300 ease-out
-          ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+        ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
       >
         {/* Backdrop */}
         <div
@@ -60,9 +65,9 @@ export function Navbar() {
           onClick={() => setMenuOpen(false)}
         />
 
-        {/* Slide panel */}
-        <div className="absolute right-0 top-0 h-full w-[100%] bg-white p-6 shadow-xl flex flex-col">
-          <div className="flex justify-end mb-10">
+        {/* Panel */}
+        <div className="absolute right-0 top-0 h-full w-full bg-white p-6 flex flex-col">
+          <div className="flex justify-end mb-8">
             <button
               onClick={() => setMenuOpen(false)}
               className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center"
@@ -88,14 +93,31 @@ export function Navbar() {
 }
 
 /* ===================== SOCIAL PILL ===================== */
-function SocialPill({ icon, label }) {
+function SocialPill({ icon, platform, username }) {
   return (
-    <button className="flex items-center gap-3 rounded-2xl bg-white px-5 py-3 shadow w-full">
-      <div className="w-8 h-8 rounded-full bg-black text-white flex items-center justify-center">
-        <img src={icon} alt={label} className="w-4 h-4" />
+    <a
+      href="#"
+      className="flex items-center gap-4 rounded-2xl bg-white px-4 py-3
+                 shadow-[0_8px_20px_rgba(15,23,42,0.06)]
+                 transition-all duration-200
+                 hover:-translate-y-0.5 hover:shadow-md"
+    >
+      {/* ICON */}
+      <div className="w-10 h-10 rounded-full bg-white border border-gray-200
+                      flex items-center justify-center">
+        <img src={icon} alt={platform} className="w-5 h-5 object-contain" />
       </div>
-      <span className="text-sm font-medium text-gray-900">{label}</span>
-    </button>
+
+      {/* TEXT */}
+      <div className="flex flex-col leading-tight">
+        <span className="text-sm font-semibold text-gray-900">
+          {username}
+        </span>
+        <span className="text-xs text-gray-500">
+          {platform}
+        </span>
+      </div>
+    </a>
   );
 }
 
@@ -163,20 +185,32 @@ export default function HeroSection() {
                 </h1>
 
                 <p className="mt-3 text-sm md:text-base text-white/80 max-w-2xl mx-auto">
-                  Clear dashboards, automated workflows, and practical insights for
-                  teams that want to move with confidence.
+                  Clear dashboards, automated workflows, and practical insights
+                  for teams that want to move with confidence.
                 </p>
+
+                {/* CTA */}
+                <div className="mt-6 flex justify-center gap-3">
+                  <button className="px-6 py-2.5 rounded-full bg-white text-black text-sm font-medium
+                                     transition hover:bg-black hover:text-white">
+                    Resume
+                  </button>
+
+                  <button className="px-6 py-2.5 rounded-full bg-red-600 text-white text-sm font-medium
+                                     transition hover:bg-white hover:text-black">
+                    Work
+                  </button>
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
-            <SocialPill icon="/assets/icon-facebook.svg" label="Facebook" />
-            <SocialPill icon="/assets/icon-instagram.svg" label="Instagram" />
-            <SocialPill icon="/assets/icon-linkedin.svg" label="LinkedIn" />
-            <SocialPill icon="/assets/icon-dribbble.svg" label="Dribbble" />
-            <SocialPill icon="/assets/icon-behance.svg" label="Behance" />
-            <SocialPill icon="/assets/icon-portfolio.svg" label="Portfolio" />
+          {/* SOCIAL GRID */}
+          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <SocialPill icon={linkedin} platform="LinkedIn" username="B Sai Krishna" url="https://www.linkedin.com/in/saikrishnacodes/"/>
+            <SocialPill icon={github} platform="GitHub" username="saikrishna" url="https://github.com/Sai-krishnaa"/>
+            <SocialPill icon={leetcode} platform="LeetCode" username="SaiKrishna" url="https://leetcode.com/u/Code-Sai/"/>
+            <SocialPill icon={hackerank} platform="HackerRank" username="saikrishna_dev" url="https://www.hackerrank.com/profile/saikrishna34326"/>
           </div>
         </section>
       </main>
