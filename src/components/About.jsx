@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import img2 from "../assets/img2.jpeg";
 import sql from "../assets/sql.svg"
 import excel from "../assets/excel.svg"
@@ -6,7 +6,6 @@ import powerbi from "../assets/power-bi.svg"
 import python from "../assets/python.svg"
 import git from "../assets/git.svg"
 import n8n from "../assets/n8n.svg"
-import flag from "../assets/flag.png";
 
 
 function DotRed() {
@@ -22,6 +21,19 @@ function SmallThumb({ src }) {
 }
 
 export default function About() {
+  const [showAllCerts, setShowAllCerts] = useState(false);
+
+  const certifications = [
+    "Data Bricks AI Fundamentals",
+    "Scaler × Google Startup School: Prompt to Prototype program",
+    "Kaggle × Google 5-Day AI Agents Program",
+    "Cognizant AI Forage",
+    "Young Turks",
+    "AI Workshop NxtWave"
+  ];
+
+  const visibleCerts = showAllCerts ? certifications : certifications.slice(0, 2);
+
   return (
     <section className="container-wide px-6 py-16">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -57,8 +69,7 @@ export default function About() {
             </div>
 
             {/* Title */}
-            <h3 className="text-3xl font-semibold text-gray-900 mb-2">Hi, I’m B Sai Krishna — a data analyst who transforms raw numbers into clear insights.
-            I turn complexity into clarity and help decisions become direction.</h3>
+            <h3 className="text-3xl font-semibold text-gray-900 mb-2">Hi, I’m B Sai Krishna — a data analyst who turns messy, real-world data into decisions that actually move the business.</h3>
 
             {/* Description */}
             <p className="text-md text-gray-500 mb-5">
@@ -132,17 +143,23 @@ export default function About() {
             </div>
 
             <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4">
-              <div className="flex-1">
+              <div className="flex-1">  
               <h2 className="text-lg font-bold text-gray-900">Certifications</h2>
-              <h3 className="mt-2 text-lg font-semibold text-gray-900">
-              Data Bricks AI Fundamentals
-              </h3>
-              <h3 className="mt-2 text-lg font-semibold text-gray-900">
-              Naukri Campus Young Turks
-              </h3>
+              <div className="space-y-2">
+                {visibleCerts.map((cert, idx) => (
+                  <h3 key={idx} className="mt-2 text-lg font-semibold text-gray-900">
+                    {cert}
+                  </h3>
+                ))}
               </div>
-              <div className="w-28 h-16 rounded-md overflow-hidden bg-gray-100">
-              <img src={flag} alt="Country flag" className="w-full h-full object-cover" />
+              {certifications.length > 2 && (
+                <button 
+                  onClick={() => setShowAllCerts(!showAllCerts)}
+                  className="mt-4 inline-block text-xs text-blue-600 hover:text-blue-700 font-medium transition"
+                >
+                  {showAllCerts ? "Show Less ↑" : `Read More (${certifications.length - 2} more) ↓`}
+                </button>
+              )}
               </div>
             </div>
           </div>
