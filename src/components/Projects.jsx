@@ -1,6 +1,6 @@
 // src/components/ProjectsSection.jsx
 import React from "react";
-import bg from "../assets/img3.jpeg";
+import bg from "../assets/img9.jpg";
 
 // import card images (use your real filenames here)
 import imgPhysio from "../assets/img4.jpeg";
@@ -104,7 +104,7 @@ export default function ProjectsSection() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="absolute inset-0 bg-black/40 z-[1]" />
+        <div className="absolute inset-0 bg-black/10 z-[1]" />
 
         <div className="relative z-[2]">
           {/* top meta row */}
@@ -126,7 +126,7 @@ export default function ProjectsSection() {
           <div className="mt-8 flex justify-center">
             <p className="max-w-3xl text-center text-[26px] md:text-[32px] leading-snug font-medium text-white">
               Data-driven{" "}
-              <span className="text-sky-400">solutions crafted to</span>{" "}
+              <span className="text-blue-700"><b>solutions crafted to</b></span>{" "}
               <span className="text-gray-200">solve real problems</span>{" "}
               with accuracy and simplicity
             </p>
