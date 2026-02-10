@@ -142,7 +142,7 @@ export default function HeroSection() {
       <main className="container-wide px-4 md:px-6 pb-14">
         <section className="mt-6 w-full rounded-[32px] bg-white shadow-lg p-1">
           <div
-            className="relative rounded-[28px] overflow-hidden min-h-[460px] md:min-h-[560px]"
+            className="relative rounded-[28px] overflow-hidden min-h-[460px] md:min-h-[560px] bg-gradient-to-b from-gray-900 to-black"
             style={
               !isDesktop
                 ? {
@@ -155,7 +155,7 @@ export default function HeroSection() {
           >
             {/* DESKTOP: LIGHT PILLAR */}
             {isDesktop && (
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 z-0">
                 <LightPillar
                   topColor="#FF48FF"
                   bottomColor="#2D35FF"
@@ -174,9 +174,9 @@ export default function HeroSection() {
             )}
 
             {/* OVERLAYS */}
-            <div className="absolute inset-0" />
+            <div className="absolute inset-0 bg-black/20 z-5" />
             {/* CONTENT */}
-            <div className="absolute inset-0 z-10 px-6 md:px-10 pt-6">
+            <div className="absolute inset-0 z-10 px-6 md:px-10 pt-6 flex flex-col">
               <div className="flex justify-between">
                 <div className="inline-flex items-center gap-3 bg-white/95 px-3 py-2 rounded-2xl shadow">
                   <img src={flag} alt="flag" className="w-8 h-8" />
