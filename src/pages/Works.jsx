@@ -168,16 +168,14 @@ function ProjectSlide({ project, prev, next, index, projects, setIndex, navigate
         <div className="flex gap-3">
           <button
             onClick={prev}
-            disabled={index === 0}
-            className={`btnNav ${index === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className="btnNav"
           >
             ←
           </button>
 
           <button
             onClick={next}
-            disabled={index === projects.length - 1}
-            className={`btnNav ${index === projects.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className="btnNav"
           >
             →
           </button>
