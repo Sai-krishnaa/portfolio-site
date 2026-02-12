@@ -31,11 +31,11 @@ export default function Works() {
   ];
 
   const next = () => {
-    setIndex((prev) => (prev + 1) % projects.length);
+    setIndex((prev) => (prev < projects.length - 1 ? prev + 1 : prev));
   };
 
   const prev = () => {
-    setIndex((prev) => (prev === 0 ? projects.length - 1 : prev - 1));
+    setIndex((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
   return (
@@ -83,14 +83,16 @@ export default function Works() {
             <div className="hidden md:flex gap-4">
               <button
                 onClick={prev}
-                className="btnNav"
+                disabled={index === 0}
+                className={`btnNav ${index === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
               >
                 ←
               </button>
 
               <button
                 onClick={next}
-                className="btnNav"
+                disabled={index === projects.length - 1}
+                className={`btnNav ${index === projects.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
               >
                 →
               </button>
@@ -137,28 +139,13 @@ export default function Works() {
 /* SLIDE */
 
 function ProjectSlide({ project, prev, next, index, projects, setIndex, navigate }) {
-  const handleDragEnd = (event, info) => {
-    const swipeThreshold = 50;
-    
-    if (info.offset.x > swipeThreshold) {
-      // Swiped right (previous)
-      prev();
-    } else if (info.offset.x < -swipeThreshold) {
-      // Swiped left (next)
-      next();
-    }
-  };
-
   return (
     <motion.div
       initial={{ x: 120, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -120, opacity: 0 }}
       transition={{ duration: 0.45 }}
-      drag="x"
-      dragElastic={0.2}
-      onDragEnd={handleDragEnd}
-      className={`absolute inset-0 bg-linear-to-br ${project.color} p-8 md:p-12 lg:p-16 flex flex-col justify-between text-white cursor-grab active:cursor-grabbing`}
+      className={`absolute inset-0 bg-linear-to-br ${project.color} p-8 md:p-12 lg:p-16 flex flex-col justify-between text-white`}
     >
 
       {/* TOP BAR */}
@@ -181,14 +168,16 @@ function ProjectSlide({ project, prev, next, index, projects, setIndex, navigate
         <div className="flex gap-3">
           <button
             onClick={prev}
-            className="btnNav"
+            disabled={index === 0}
+            className={`btnNav ${index === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
           >
             ←
           </button>
 
           <button
             onClick={next}
-            className="btnNav"
+            disabled={index === projects.length - 1}
+            className={`btnNav ${index === projects.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
           >
             →
           </button>
