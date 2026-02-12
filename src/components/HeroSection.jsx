@@ -151,9 +151,9 @@ export default function HeroSection() {
       <Navbar />
 
       <main className="container-wide px-4 md:px-6 pb-14">
-        <section className="mt-6 w-full rounded-[32px] bg-white shadow-lg p-1">
+        <section className="mt-6 w-full rounded-4xl bg-white shadow-lg p-1">
           <div
-            className="relative rounded-[28px] overflow-hidden min-h-[460px] md:min-h-[560px] bg-gradient-to-b from-gray-900 to-black"
+            className="relative rounded-[28px] overflow-hidden min-h-[460px] md:min-h-[560px] bg-linear-to-b from-gray-900 to-black"
             style={
               !isDesktop
                 ? {

@@ -49,7 +49,7 @@ function ProjectCard({ project }) {
       </div>
 
       {/* gradient top mask */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
 
       {/* header badges */}
       <div className="absolute inset-x-0 top-0 flex items-start justify-between px-4 pt-4 text-[11px] z-10">
@@ -104,9 +104,9 @@ export default function ProjectsSection() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="absolute inset-0 bg-black/10 z-[1]" />
+        <div className="absolute inset-0 bg-black/10 z-1" />
 
-        <div className="relative z-[2]">
+        <div className="relative z-2">
           {/* top meta row */}
           <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.18em] text-white/80">
             <button className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm px-4 py-1 text-white">
@@ -115,7 +115,7 @@ export default function ProjectsSection() {
             </button>
 
             <div className="hidden md:flex items-center gap-3">
-              <span className="h-[1px] w-10 bg-white/40" />
+              <span className="h-px w-10 bg-white/40" />
               <span className="text-[10px] tracking-[0.18em] text-white/80">
                 Work that turns data into decisions
               </span>
