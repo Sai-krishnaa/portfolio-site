@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sai Krishna - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+        
+        .contact-info {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .contact-info a {
+            color: #000;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        
+        section {
+            margin-bottom: 25px;
+        }
+        
+        h2 {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #000;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        
+        .job, .education, .skill-category {
+            margin-bottom: 15px;
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 5px;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .company {
+            color: #666;
+            font-style: italic;
+        }
+        
+        .date {
+            color: #999;
+            font-size: 14px;
+        }
+        
+        ul {
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+        
+        li {
+            margin-bottom: 5px;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        
+        .skill-item {
+            padding: 8px 12px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sai Krishna</h1>
+            <div class="contact-info">
+                <a href="mailto:your.email@gmail.com">your.email@gmail.com</a> | 
+                <a href="tel:+1234567890">+91-XXXXXXXXXX</a> | 
+                <a href="https://linkedin.com/in/saikrishnacodes">LinkedIn</a> | 
+                <a href="https://github.com/Sai-krishnaa">GitHub</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>Professional Summary</h2>
+            <p>
+                Results-driven developer with expertise in building web applications and data-driven solutions. 
+                Passionate about turning complex data into actionable insights through clear dashboards and 
+                automated workflows. Proficient in modern technologies and best practices.
+            </p>
+        </section>
+
+        <section>
+            <h2>Professional Experience</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Senior Developer</span>
+                    <span class="date">Jan 2024 - Present</span>
+                </div>
+                <div class="company">Company Name</div>
+                <ul>
+                    <li>Led development of data visualization dashboards using React and modern web technologies</li>
+                    <li>Optimized application performance, reducing load time by 40%</li>
+                    <li>Collaborated with cross-functional teams to deliver high-quality solutions</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Full Stack Developer</span>
+                    <span class="date">June 2022 - Dec 2023</span>
+                </div>
+                <div class="company">Previous Company</div>
+                <ul>
+                    <li>Developed full-stack web applications using MERN stack</li>
+                    <li>Implemented automated workflows and data pipelines</li>
+                    <li>Mentored junior developers and conducted code reviews</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Education</h2>
+            
+            <div class="education">
+                <div class="job-header">
+                    <span class="job-title">Bachelor of Science in Computer Science</span>
+                    <span class="date">2020 - 2024</span>
+                </div>
+                <div class="company">University Name</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Technical Skills</h2>
+            
+            <div class="skill-category">
+                <strong>Frontend:</strong>
+                <div class="skills-grid">
+                    <div class="skill-item">React.js</div>
+                    <div class="skill-item">Tailwind CSS</div>
+                    <div class="skill-item">JavaScript/TypeScript</div>
+                    <div class="skill-item">HTML/CSS</div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <strong>Backend:</strong>
+                <div class="skills-grid">
+                    <div class="skill-item">Node.js</div>
+                    <div class="skill-item">Python</div>
+                    <div class="skill-item">MongoDB</div>
+                    <div class="skill-item">PostgreSQL</div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <strong>Tools & Platforms:</strong>
+                <div class="skills-grid">
+                    <div class="skill-item">Git & GitHub</div>
+                    <div class="skill-item">Docker</div>
+                    <div class="skill-item">VS Code</div>
+                    <div class="skill-item">AWS / Firebase</div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Projects</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Data Dashboard Application</span>
+                </div>
+                <ul>
+                    <li>Built an interactive dashboard for real-time data visualization</li>
+                    <li>Implemented with React, Canvas, and GSAP for smooth animations</li>
+                    <li>Features include automated workflows and practical insights</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certifications</h2>
+            <ul>
+                <li>Certified JavaScript Developer - Year</li>
+                <li>Azure Developer Associate - Year</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        // Print functionality for easy PDF generation
+        window.addEventListener('load', () => {
+            // Uncomment the next line to auto-print when opening
+            // window.print();
+        });
+    </script>
+</body>
+</html>

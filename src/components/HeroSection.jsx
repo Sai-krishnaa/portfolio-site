@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import LightPillar from "./LightPillar";
 import flag from "../assets/flag.png";
 import heroBg from "../assets/hero-bg.png";
@@ -114,6 +115,7 @@ function SocialPill({ icon, platform, username, url }) {
 
 /* ===================== HERO SECTION ===================== */
 export default function HeroSection() {
+  const navigate = useNavigate();
   const [time, setTime] = useState(new Date());
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
 
@@ -127,6 +129,15 @@ export default function HeroSection() {
     const t = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
+
+  const handleResumeClick = () => {
+    // Open resume PDF in a new tab
+    window.open("/B_Sai_Krishna_Analyst_Resume.pdf", "_blank");
+  };
+
+  const handleWorkClick = () => {
+    navigate("/works");
+  };
 
   const formattedTime = new Intl.DateTimeFormat(undefined, {
     hour: "2-digit",
@@ -181,7 +192,7 @@ export default function HeroSection() {
                 <div className="inline-flex items-center gap-3 bg-white/95 px-3 py-2 rounded-2xl shadow">
                   <img src={flag} alt="flag" className="w-8 h-8" />
                   <div className="text-xs">
-                    <div className="font-semibold">Sai Krishna 2025°</div>
+                    <div className="font-semibold">Sai Krishna 2026°</div>
                     <div className="text-[11px] text-gray-500">
                       Data is the raw material
                     </div>
@@ -205,11 +216,15 @@ export default function HeroSection() {
                 </p>
 
                 <div className="mt-6 flex justify-center gap-3">
-                  <button className="px-6 py-2.5 rounded-full bg-white text-black text-sm font-medium
+                  <button 
+                    onClick={handleResumeClick}
+                    className="px-6 py-2.5 rounded-full bg-white text-black text-sm font-medium
                                      transition hover:bg-black hover:text-white">
                     Resume
                   </button>
-                  <button className="px-6 py-2.5 rounded-full bg-red-600 text-white text-sm font-medium
+                  <button 
+                    onClick={handleWorkClick}
+                    className="px-6 py-2.5 rounded-full bg-red-600 text-white text-sm font-medium
                                      transition hover:bg-white hover:text-black">
                     Work
                   </button>

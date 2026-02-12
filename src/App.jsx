@@ -1,5 +1,6 @@
 // src/App.jsx
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HeroSection from "./components/HeroSection";
 import About from "./components/About";
 import Projects from "./components/Projects";
@@ -10,10 +11,9 @@ import Skills from "./components/Skills";
 // import { Skiper19 } from "./components/Skiper19";
 import WorksGallery from "./components/WorksGallery";
 import IdeaContactForm from "./components/IdeaContactForm";
+import Works from "./pages/Works";
 
-
-
-export default function App() {
+function HomePage() {
   return (
     <>
       <HeroSection />
@@ -53,5 +53,16 @@ export default function App() {
         />
       </div>
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/works" element={<Works />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
