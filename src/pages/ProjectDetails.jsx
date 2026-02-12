@@ -81,17 +81,17 @@ export default function ProjectDetail() {
         </div>
 
         {/* HEADER - CENTER BELOW BACK */}
-        <div className="text-center pt-12 md:pt-24 mb-8 space-y-6 max-w-4xl mx-auto">
+        <div className="pt-8 md:pt-18 mb-8 space-y-6 max-w-4xl mx-auto">
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-gray-900 via-gray-800 to-gray-600 bg-clip-text text-transparent leading-[1.1] tracking-tight">
             {getProjectTitle(id)}
-          </h1> {/* Removed "Project" for cleaner look */}
+          </h1>
           
           <p className="text-gray-500 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
             Here goes full case study, images, tech stack, architecture, etc.
           </p>
 
           {/* TECH STACK ICONS - UNDER DESCRIPTION, SMALL SIZE */}
-          <div className="flex flex-wrap justify-center gap-3 pt-4">
+          <div className="flex flex-wrap gap-3 pt-2">
             {[
               { icon: sql, name: "SQL" },
               { icon: excel, name: "Excel" },
@@ -126,28 +126,28 @@ export default function ProjectDetail() {
           </div>
         </div>
 
-        {/* MAIN CONTENT AREA - Add your case study here */}
-        <div className="max-w-5xl mx-auto">
-  <div className=" p-6 md:p-12 rounded-3xl ">
-    <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-12 text-gray-900 text-center">
-      Analytics Dashboard
-    </h2>
-    
-    {/* DASHBOARD IMAGE - Full responsive */}
-    <div className="w-full rounded-2xl overflow-hidden shadow-xl ring-1 ring-gray-200/50 bg-white">
-      <img 
-        src={img11}  // ← YE PATH CHANGE KARO
-        alt="Analytics Dashboard"
-        className="
-          w-full h-[220px] md:h-[450px] lg:h-[500px] 
-          object-cover object-center
-          hover:scale-[1.02] transition-transform duration-500
-        "
-      />
-    </div>
+        {/* MAIN CONTENT AREA - WIDER CARD */}
+        {/* Replace this section in your full code */}
+<div className="max-w-6xl mx-auto">
+  <h2 className="text-2xl md:text-3xl font-semibold mb-6 md:mb-12 text-gray-900 text-center">
+    Analytics Dashboard
+  </h2>
+  
+  {/* IMAGE PERFECTLY FITS CARD */}
+  <div className="w-full max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 bg-white border border-gray-100/50">
+    <img 
+      src={img11}
+      alt="Analytics Dashboard"
+      className="
+        w-full h-[190px] sm:h-[300px] md:h-[400px] lg:h-[500px] xl:h-[570px]
+        object-cover object-center
+        hover:scale-[1.02] transition-all duration-500 ease-out
+      "
+    />
   </div>
 </div>
+
+</div>
       </div>
-    </div>
   );
 }
