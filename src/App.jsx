@@ -12,6 +12,7 @@ import Skills from "./components/Skills";
 import WorksGallery from "./components/WorksGallery";
 import IdeaContactForm from "./components/IdeaContactForm";
 import Works from "./pages/Works";
+import ProjectDetail from "./pages/ProjectDetails";
 
 function HomePage() {
   return (
@@ -62,6 +63,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/works" element={<Works />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
