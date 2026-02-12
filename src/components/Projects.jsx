@@ -10,8 +10,8 @@ import imgBlood from "../assets/img7.jpeg";
 
 const projects = [
   {
-    titleTop: "Best Physical",
-    titleBottom: "Therapy",
+    titleTop: "Zepto Inventory ",
+    titleBottom: "Inventory Analysis",
     image: imgPhysio,
     badge: "See Consultation",
   },
@@ -40,7 +40,7 @@ function ProjectCard({ project }) {
     <article className="group relative rounded-3xl overflow-hidden bg-slate-900 text-white shadow-[0_18px_45px_rgba(15,23,42,0.35)] min-h-[420px] md:min-h-[460px] transition-transform duration-300 hover:-translate-y-3">
 
       {/* Image with hover dim */}
-      <div className="h-[400px] md:h-[600px] w-full overflow-hidden">
+      <div className="h-[420px] md:h-[600px] w-full overflow-hidden">
         <img
           src={project.image}
           alt={project.titleTop}

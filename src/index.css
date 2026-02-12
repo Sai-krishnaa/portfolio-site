@@ -5,3 +5,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
+.btnNav {
+  @apply w-12 h-12 rounded-full bg-white/20 backdrop-blur-lg flex items-center justify-center text-white hover:scale-110 transition;
+}
