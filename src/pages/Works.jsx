@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import zeptoImage from "../assets/zepto.png";
+import reconciliation from "../assets/reconciliation.png";
+import mobile from "../assets/motorola.png";
 
 export default function Works() {
   const navigate = useNavigate();
@@ -8,34 +11,31 @@ export default function Works() {
 
   const projects = [
     {
-      id: "ambulance",
-      title: "Smart Ambulance System",
+      id: "reconciliation",
+      title: "Transaction Reconciliation System",
+      desc: "Automated cross-platform transaction matching system",
+      image: reconciliation,
+    },
+    {
+      id: "zepto",
+      title: "Zepto Inventory Analysis",
       desc: "Real-time emergency dispatch & hospital pre-alert",
-      color: "from-emerald-700 to-teal-900",
-      icon: "🚑",
+      image: zeptoImage,
     },
     {
-      id: "analytics",
-      title: "Inventory Analytics Dashboard",
-      desc: "Predict stock demand & reduce wastage",
-      color: "from-blue-700 to-indigo-900",
-      icon: "📊",
-    },
-    {
-      id: "ai",
-      title: "AI Resume Screener",
+      id: "mobile-sales",
+      title: "Mobile Sales Performance",
       desc: "Automatic candidate filtering using NLP",
-      color: "from-purple-700 to-fuchsia-900",
-      icon: "🤖",
+      image: mobile,
     },
   ];
 
   const next = () => {
-    setIndex((prev) => (prev < projects.length - 1 ? prev + 1 : prev));
+    setIndex((prev) => (prev < projects.length - 1 ? prev + 1 : 0));
   };
 
   const prev = () => {
-    setIndex((prev) => (prev > 0 ? prev - 1 : prev));
+    setIndex((prev) => (prev > 0 ? prev - 1 : projects.length - 1));
   };
 
   return (
@@ -84,16 +84,14 @@ export default function Works() {
             <div className="flex gap-4 pt-2">
               <button
                 onClick={prev}
-                disabled={index === 0}
-                className={`btnNavLight ${index === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
+                className="btnNavLight"
               >
                 ←
               </button>
 
               <button
                 onClick={next}
-                disabled={index === projects.length - 1}
-                className={`btnNavLight ${index === projects.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
+                className="btnNavLight"
               >
                 →
               </button>
@@ -115,7 +113,7 @@ export default function Works() {
           </div>
 
           {/* RIGHT CARD */}
-          <div className="relative h-[520px] md:h-[620px] w-full overflow-hidden rounded-3xl shadow-2xl">
+          <div className="relative h-[520px] md:h-[620px] w-full overflow-hidden rounded-3xl shadow-2xl bg-gray-900">
             <AnimatePresence mode="wait">
               <ProjectSlide
                 key={index}
@@ -142,21 +140,82 @@ function ProjectSlide({ project, prev, next, index, projects, setIndex, navigate
 
   const handleDragEnd = (event, info) => {
     const threshold = 50;
-    if (info.offset.x > threshold) prev();
-    if (info.offset.x < -threshold) next();
+    const velocityThreshold = 500; // px/sec - faster flicks also count
+
+    // if user swiped fast enough or moved past threshold, go prev/next
+    if (info.offset.x > threshold || info.velocity.x > velocityThreshold) prev();
+    if (info.offset.x < -threshold || info.velocity.x < -velocityThreshold) next();
+
+    // mark dragging finished after handling
+    // small delay so onTap doesn't fire immediately after drag end
+    setTimeout(() => {
+      isDragging.current = false;
+      moved.current = false;
+    }, 50);
+    setShowHint(false);
   };
+
+  const isDragging = useRef(false);
+  const [showHint, setShowHint] = useState(true);
+  const moved = useRef(false);
 
   return (
     <motion.div
       initial={{ x: 120, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -120, opacity: 0 }}
-      transition={{ duration: 0.45 }}
+      transition={{ type: "spring", stiffness: 200, damping: 26 }}
       drag="x"
-      dragElastic={0.2}
+      dragElastic={0.16}
+      onDragStart={() => { isDragging.current = true; moved.current = false; setShowHint(false); }}
+      onDrag={(event, info) => {
+        if (Math.abs(info.offset.x) > 8 || Math.abs(info.offset.y) > 8) moved.current = true;
+      }}
       onDragEnd={handleDragEnd}
-      className={`absolute inset-0 bg-gradient-to-br ${project.color} p-8 md:p-12 lg:p-16 flex flex-col justify-between text-white cursor-grab active:cursor-grabbing`}
+      onTap={() => {
+        // only navigate on tap if the user didn't move (tap, not swipe)
+        if (!moved.current) navigate(`/project/${project.id}`);
+      }}
+      whileDrag={{ scale: 0.995 }}
+      className="absolute inset-0 p-7 md:p-12 lg:p-16 flex flex-col justify-between text-white cursor-grab active:cursor-grabbing bg-cover bg-center group"
+      style={{
+        backgroundImage: `url('${project.image}')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center'
+      }}
     >
+      {/* VIGNETTE OVERLAY - Bottom to Top */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/0 to-transparent pointer-events-none" />
+      
+      {/* HOVER OVERLAY */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileHover={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="absolute inset-0 bg-black/70 pointer-events-none"
+      />
+
+      {/* SWIPE HINT (hand + arrow) */}
+      {showHint && (
+        <motion.div
+          className="absolute top-28 right-8 z-30 pointer-events-none flex items-center gap-3"
+          initial={{ opacity: 0 }}
+          animate={{ x: [0, -28, 0], opacity: [0, 1, 0.6] }}
+          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+        >
+          <div className="bg-white/20 text-white/90 p-2 rounded-full shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9.5 2.5C8.12 2.5 7 3.62 7 5v6.09C6.39 11.36 6 12.16 6 13v5c0 .55.45 1 1 1h6.5c.95 0 1.77-.6 2.03-1.47l1.02-3.16c.39-1.2-.38-2.48-1.7-2.48H13v-4c0-1.93-1.57-3.5-3.5-3.5z"/>
+            </svg>
+          </div>
+
+          <div className="bg-white/10 text-white/90 p-3 rounded-full shadow-lg">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </div>
+        </motion.div>
+      )}
 
       {/* TOP BAR */}
       <div className="flex justify-between items-center">
@@ -175,59 +234,32 @@ function ProjectSlide({ project, prev, next, index, projects, setIndex, navigate
         <div className="flex gap-3">
           <button
             onClick={prev}
-            disabled={index === 0}
-            className={`btnNav ${index === 0 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className="btnNav"
           >
             ←
           </button>
 
           <button
             onClick={next}
-            disabled={index === projects.length - 1}
-            className={`btnNav ${index === projects.length - 1 ? "opacity-30 cursor-not-allowed" : ""}`}
+            className="btnNav"
           >
             →
           </button>
         </div>
       </div>
 
-      {/* CONTENT ROW */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-10 flex-1">
+      {/* BOTTOM TEXT */}
+      <div className="space-y-2 relative z-10">
+        <h2 className="text-2xl md:text-3xl font-bold">{project.title}</h2>
 
-        {/* LEFT TEXT */}
-        <div className="max-w-lg space-y-5 order-2 lg:order-1">
-          <h2 className="text-3xl md:text-4xl font-bold">{project.title}</h2>
+        <p className="text-white/70 text-base">{project.desc}</p>
 
-          <p className="text-white/70 text-lg">{project.desc}</p>
-
-          <button
-            onClick={() => navigate(`/project/${project.id}`)}
-            className="mt-4 px-6 py-3 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200 transition"
-          >
-            View Project →
-          </button>
-        </div>
-
-        {/* RIGHT ICON */}
-        <div className="relative flex items-center justify-center order-1 lg:order-2">
-
-          <motion.div
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-            className="absolute w-72 h-72 border border-white/20 rounded-full"
-          />
-
-          <motion.div
-            animate={{ rotate: -360 }}
-            transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
-            className="absolute w-52 h-52 border border-white/20 rounded-full"
-          />
-
-          <div className="text-[100px] md:text-[130px] drop-shadow-2xl">
-            {project.icon}
-          </div>
-        </div>
-
+        <button
+          onClick={() => navigate(`/project/${project.id}`)}
+          className="mt-1 px-3 py-2 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200 transition"
+        >
+          View Project →
+        </button>
       </div>
     </motion.div>
   );

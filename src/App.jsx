@@ -12,7 +12,9 @@ import Skills from "./components/Skills";
 import WorksGallery from "./components/WorksGallery";
 import IdeaContactForm from "./components/IdeaContactForm";
 import Works from "./pages/Works";
-import ProjectDetail from "./pages/ProjectDetails";
+import Reconciliation from "./pages/projects/Reconciliation";
+import Zepto from "./pages/projects/Zepto";
+import MobileSales from "./pages/projects/MobileSales";
 
 function HomePage() {
   return (
@@ -63,7 +65,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/works" element={<Works />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/project/reconciliation" element={<Reconciliation />} />
+        <Route path="/project/zepto" element={<Zepto />} />
+        <Route path="/project/mobile-sales" element={<MobileSales />} />
+        
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
