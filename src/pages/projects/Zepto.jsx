@@ -3,7 +3,7 @@ import ProjectLayout from "../../components/ProjectLayout";
 import zeptoImage from "../../assets/zepto.png";
 import python from "../../assets/python.svg";
 import powerbi from "../../assets/power-bi.svg";
-import CodeImplementation from "../../components/codeImplementation";
+import CodeImplementation from "../../components/CodeImplementation";
 import DatasetPreview from "../../components/DatasetPreview";
 
 export default function Zepto() {

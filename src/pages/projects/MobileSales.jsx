@@ -2,7 +2,7 @@ import React from "react";
 import ProjectLayout from "../../components/ProjectLayout";
 import mobileImage from "../../assets/motorola.png";
 import git from "../../assets/git.svg";
-import CodeImplementation from "../../components/codeImplementation";
+import CodeImplementation from "../../components/CodeImplementation";
 import DatasetPreview from "../../components/DatasetPreview";
 
 export default function MobileSales() {
