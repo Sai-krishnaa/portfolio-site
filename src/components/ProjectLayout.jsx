@@ -77,10 +77,56 @@ export default function ProjectLayout({
 
           <button
             onClick={() => setMenuOpen(prev => !prev)}
-            className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center"
+            className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-red-600 text-white
+                       flex items-center justify-center text-xl md:text-2xl
+                       transition-transform duration-200 hover:scale-105"
           >
-            ↗
+            <span
+              className={`inline-block transition-transform duration-300 ${
+                menuOpen ? "rotate-180" : ""
+              }`}
+            >
+              ↗
+            </span>
           </button>
+        </div>
+
+        {/* MOBILE MENU */}
+        <div
+          className={`fixed inset-0 z-40 md:hidden transition-transform duration-300
+          ${menuOpen ? "translate-x-0" : "translate-x-full"}`}
+        >
+          <div
+            className="absolute inset-0 bg-black/40"
+            onClick={() => setMenuOpen(false)}
+          />
+
+          <div className="absolute right-0 top-0 h-full w-full bg-white p-6 flex flex-col">
+            <div className="flex justify-end mb-8">
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center"
+              >
+                ↗
+              </button>
+            </div>
+
+            <nav className="flex flex-col gap-6 text-lg font-medium text-gray-800">
+              <a href="/" onClick={() => setMenuOpen(false)}>Home</a>
+              <a href="/#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+              <a href="/#skills" onClick={() => setMenuOpen(false)}>Skills</a>
+              <button
+                onClick={() => { navigate(-1); setMenuOpen(false); }}
+                className="text-left"
+              >
+                ← Back
+              </button>
+            </nav>
+
+            <button className="mt-auto px-6 py-3 rounded-full bg-black text-white">
+              Contact Us
+            </button>
+          </div>
         </div>
 
         {hero && <div className="mb-1">{hero}</div>}
