@@ -1,6 +1,7 @@
 import React from "react";
 import ProjectLayout from "../../components/ProjectLayout";
 import zeptoImage from "../../assets/zepto.png";
+import zeptodash from "../../assets/img11.png";
 import python from "../../assets/python.svg";
 import powerbi from "../../assets/power-bi.svg";
 import CodeImplementation from "../../components/CodeImplementation";
@@ -106,7 +107,7 @@ DIVIDE(
   return (
     <ProjectLayout 
       hero={heroNode} 
-      image={zeptoImage} 
+      image={zeptodash} 
       tech={tech}
       projectTitle="Zepto Real-Time Inventory Intelligence"
       projectDescription="Advanced inventory management system powered by machine learning forecasting models and automated replenishment triggers for optimized stock levels."

@@ -1,6 +1,7 @@
 import React from "react";
 import ProjectLayout from "../../components/ProjectLayout";
 import mobileImage from "../../assets/motorola.png";
+import mobiledash from "../../assets/mobiledash.png";
 import git from "../../assets/git.svg";
 import CodeImplementation from "../../components/CodeImplementation";
 import DatasetPreview from "../../components/DatasetPreview";
@@ -101,7 +102,7 @@ DIVIDE([Current_Month_Sales] - [Previous_Month_Sales], [Previous_Month_Sales]) *
   return (
     <ProjectLayout 
       hero={heroNode} 
-      image={mobileImage} 
+      image={mobiledash} 
       tech={tech}
       projectTitle="Mobile Sales Performance Dashboard"
       projectDescription="Comprehensive analytics platform for tracking mobile product sales, customer cohorts, and campaign performance with real-time insights."
