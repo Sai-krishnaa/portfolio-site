@@ -183,6 +183,9 @@ export default function ProjectLayout({
             </div>
           </div>
 
+          {/* CHILDREN CONTENT */}
+          {children && <div className="mt-1">{children}</div>}
+
         </div>
       </div>
 

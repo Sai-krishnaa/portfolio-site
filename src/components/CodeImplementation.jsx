@@ -74,7 +74,7 @@ DIVIDE(
 
       {/* Heading */}
       <h2 className="text-3xl md:text-4xl font-bold mb-6 flex items-center gap-2">
-        <span className="text-pink-500">&lt;/&gt;</span>
+        <span className="text-black">&lt;/&gt;</span>
         Code Implementation
       </h2>
 
@@ -87,7 +87,7 @@ DIVIDE(
             className={`px-4 py-2 rounded-full text-sm font-semibold transition-all
               ${
                 activeTab === tab
-                  ? "bg-black text-white"
+                  ? "bg-blue-600 text-white"
                   : "bg-gray-100 text-gray-700 hover:bg-gray-200"
               }`}
           >
@@ -100,7 +100,7 @@ DIVIDE(
       <div className="relative bg-[#0d1117] text-gray-200 rounded-2xl p-6 overflow-auto shadow-xl">
 
         {/* Language Badge */}
-        <span className="absolute top-4 left-4 text-xs px-3 py-1 rounded-full bg-purple-600 text-white">
+        <span className="absolute top-4 left-4 text-xs px-3 py-1 rounded-full bg-blue-600 text-white">
           {labels[activeTab]}
         </span>
 

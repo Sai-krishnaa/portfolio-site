@@ -6,7 +6,8 @@ import excel from "../../assets/excel.svg";
 import python from "../../assets/python.svg";
 import power from "../../assets/power-bi.svg";
 import dashboard from "../../assets/recondash.png";
-import CodeImplementation from "../../components/CodeImplementation";
+import CodeImplementation from "../../components/codeImplementation";
+import DatasetPreview from "../../components/DatasetPreview";
 
 export default function Reconciliation() {
   const tech = [
@@ -40,6 +41,12 @@ export default function Reconciliation() {
 
   return (
     <ProjectLayout hero={heroNode} image={dashboard} tech={tech}>
+      <DatasetPreview files={[
+        "datasets/bank_settlement.csv",
+        "datasets/merchant_orders.csv",
+        "datasets/payment_gateway.csv",
+        "datasets/refunds.csv"
+      ]} />
       <CodeImplementation/>
     </ProjectLayout>
   );
