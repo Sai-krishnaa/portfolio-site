@@ -41,7 +41,12 @@ export default function Reconciliation() {
 
   return (
     <ProjectLayout hero={heroNode} image={dashboard} tech={tech}>
-      <DatasetPreview fileName="datasets/bank_settlement.csv" />
+      <DatasetPreview files={[
+        "datasets/bank_settlement.csv",
+        "datasets/merchant_orders.csv",
+        "datasets/payment_gateway.csv",
+        "datasets/refunds.csv"
+      ]} />
       <CodeImplementation/>
     </ProjectLayout>
   );
