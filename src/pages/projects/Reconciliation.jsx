@@ -6,7 +6,7 @@ import excel from "../../assets/excel.svg";
 import python from "../../assets/python.svg";
 import power from "../../assets/power-bi.svg";
 import dashboard from "../../assets/recondash.png";
-import CodeImplementation from "../../components/codeImplementation";
+import CodeImplementation from "../../components/CodeImplementation";
 import DatasetPreview from "../../components/DatasetPreview";
 
 export default function Reconciliation() {
