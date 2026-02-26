@@ -8,6 +8,10 @@ export default function ProjectLayout({
   tech = [],
   children,
   hero = null,
+  projectTitle = "Meet the Transaction Reconciliation Engine",
+  projectDescription = "This project automates complex financial reconciliation processes.",
+  faqItems = [],
+  files = [],
 }) {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -16,36 +20,17 @@ export default function ProjectLayout({
   const [selectedFile, setSelectedFile] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
 
-  // IMPORTANT: Files must exist inside /public folder
-  const files = [
-    "bank_settlement.csv",
-    "merchant_orders.csv",
-    "payment_gateway.csv",
-    "refunds.csv",
-  ];
+  // Handle back button - go back or to home
+  const handleBack = () => {
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
 
-  const faqItems = [
-    {
-      question: "What problem does this project solve?",
-      answer:
-        "It eliminates manual reconciliation by automatically matching transactions across gateways, banks, and internal ledgers.",
-    },
-    {
-      question: "How does the matching logic work?",
-      answer:
-        "Transactions are validated using transaction IDs, timestamps, and amount comparisons with automated exception detection.",
-    },
-    {
-      question: "What tools were used?",
-      answer:
-        "The system uses SQL, Excel, Python, and Power BI for data processing, validation, and reporting.",
-    },
-    {
-      question: "How are unmatched records handled?",
-      answer:
-        "Unmatched transactions are flagged, categorized, and prepared for investigation to ensure financial accuracy.",
-    },
-  ];
+  // Use passed files or default to empty array
+  const csvFiles = files.length > 0 ? files : [];
 
   function FileIcon() {
     return (
@@ -61,12 +46,12 @@ export default function ProjectLayout({
 
   return (
     <>
-      <div className="min-h-screen w-full bg-gradient-to-br from-white via-gray-50 to-white text-gray-900 px-4 sm:px-6 lg:px-16 pt-8 pb-20">
+      <div className="min-h-screen w-full bg-linear-to-br from-white via-gray-50 to-white text-gray-900 px-4 sm:px-6 lg:px-16 pt-8 pb-20">
 
         {/* TOP NAV */}
         <div className="max-w-7xl mx-auto flex items-center justify-between mb-10">
           <button
-            onClick={() => navigate(-1)}
+            onClick={handleBack}
             className="flex items-center gap-3 text-gray-700 hover:text-black transition-all font-medium"
           >
             <span className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center">
@@ -161,73 +146,77 @@ export default function ProjectLayout({
           <div className="max-w-6xl mx-auto mb-10">
             <p className="text-sm text-gray-500 mb-2">About the project</p>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
-              Meet the Transaction Reconciliation Engine
+              {projectTitle}
             </h2>
             <p className="text-gray-600 text-lg max-w-3xl">
-              This project automates complex financial reconciliation processes.
+              {projectDescription}
             </p>
           </div>
 
           {/* FAQ */}
-          <div className="max-w-6xl mx-auto mb-10 space-y-3">
-            {faqItems.map((item, index) => (
-              <div
-                key={index}
-                className="border rounded-2xl bg-blue-600 text-white overflow-hidden"
-              >
-                <button
-                  onClick={() =>
-                    setOpenIndex(openIndex === index ? null : index)
-                  }
-                  className="w-full flex justify-between items-center px-6 py-4"
+          {faqItems.length > 0 && (
+            <div className="max-w-6xl mx-auto mb-10 space-y-3">
+              {faqItems.map((item, index) => (
+                <div
+                  key={index}
+                  className="border rounded-2xl bg-blue-600 text-white overflow-hidden"
                 >
-                  {item.question}
-                  <span>{openIndex === index ? "−" : "+"}</span>
-                </button>
+                  <button
+                    onClick={() =>
+                      setOpenIndex(openIndex === index ? null : index)
+                    }
+                    className="w-full flex justify-between items-center px-6 py-4"
+                  >
+                    {item.question}
+                    <span>{openIndex === index ? "−" : "+"}</span>
+                  </button>
 
-                {openIndex === index && (
-                  <div className="px-6 pb-4">
-                    {item.answer}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+                  {openIndex === index && (
+                    <div className="px-6 pb-4">
+                      {item.answer}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
 
           {/* CSV RESOURCES */}
-          <div className="max-w-xl mx-auto py-10">
-            <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
+          {csvFiles.length > 0 && (
+            <div className="max-w-xl mx-auto py-10">
+              <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
 
-              <div className="flex items-center gap-3 mb-3">
-                <div className="text-blue-500">
-                  <FileIcon />
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="text-blue-500">
+                    <FileIcon />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900">
+                    CSV Resources
+                  </h3>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900">
-                  CSV Resources
-                </h3>
-              </div>
 
-              <p className="text-sm text-gray-500 mb-5">
-                Payment reconciliation datasets including bank settlements,
-                merchant orders, gateway logs, and refund records.
-              </p>
+                <p className="text-sm text-gray-500 mb-5">
+                  Payment reconciliation datasets including bank settlements,
+                  merchant orders, gateway logs, and refund records.
+                </p>
 
-              <div className="flex flex-wrap gap-2">
-                {files.map((file) => (
-                  <button
-                    key={file}
-                    onClick={() => {
-                      setSelectedFile(file);
-                      setShowPopup(true);
-                    }}
-                    className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-1.5 rounded-full"
-                  >
-                    {file}
-                  </button>
-                ))}
+                <div className="flex flex-wrap gap-2">
+                  {csvFiles.map((file) => (
+                    <button
+                      key={file}
+                      onClick={() => {
+                        setSelectedFile(file);
+                        setShowPopup(true);
+                      }}
+                      className="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-1.5 rounded-full"
+                    >
+                      {file}
+                    </button>
+                  ))}
+                </div>
               </div>
             </div>
-          </div>
+          )}
 
           {/* CHILDREN CONTENT */}
           {children && <div className="mt-1">{children}</div>}

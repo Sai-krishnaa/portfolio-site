@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 
-export default function CodeImplementation() {
-  const [activeTab, setActiveTab] = useState("python");
-
-  const codeSnippets = {
+export default function CodeImplementation({ codeSnippets = {} }) {
+  const defaultSnippets = {
     python: `import pandas as pd
 from sqlalchemy import create_engine
 
@@ -58,6 +56,10 @@ DIVIDE(
 =TEXT(TODAY(),"dd-mm-yyyy")`
   };
 
+  // Merge provided snippets with defaults
+  const finalSnippets = { ...defaultSnippets, ...codeSnippets };
+  const [activeTab, setActiveTab] = useState(Object.keys(finalSnippets)[0]);
+
   const labels = {
     python: "PYTHON",
     sql: "SQL",
@@ -66,7 +68,7 @@ DIVIDE(
   };
 
   const handleCopy = () => {
-    navigator.clipboard.writeText(codeSnippets[activeTab]);
+    navigator.clipboard.writeText(finalSnippets[activeTab]);
   };
 
   return (
@@ -80,7 +82,7 @@ DIVIDE(
 
       {/* Tabs */}
       <div className="flex flex-wrap gap-3 mb-6">
-        {Object.keys(codeSnippets).map((tab) => (
+        {Object.keys(finalSnippets).map((tab) => (
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
@@ -112,8 +114,8 @@ DIVIDE(
           Copy Code
         </button>
 
-        <pre className="mt-10 text-sm md:text-base whitespace-pre-wrap break-words">
-          <code>{codeSnippets[activeTab]}</code>
+        <pre className="mt-10 text-sm md:text-base whitespace-pre-wrap wrap-break-word">
+          <code>{finalSnippets[activeTab]}</code>
         </pre>
       </div>
     </div>
