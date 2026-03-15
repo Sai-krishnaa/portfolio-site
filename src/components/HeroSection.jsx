@@ -132,7 +132,7 @@ export default function HeroSection() {
 
   const handleResumeClick = () => {
     // Open resume PDF in a new tab
-    window.open("/B_Sai_Krishna_Analyst_Resume.pdf", "_blank");
+    window.open("/B_SaiKrishna_Data_Analyst_Resume.pdf", "_blank");
   };
 
   const handleWorkClick = () => {
