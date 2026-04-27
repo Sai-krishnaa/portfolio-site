@@ -6,7 +6,7 @@ import bg from "../assets/img9.jpg";
 import tranaction from "../assets/tr.png";
 import zepto from "../assets/zp.png";
 import mobile from "../assets/md.png";
-import imgBlood from "../assets/img7.jpeg";
+import imgBlood from "../assets/sh.png";
 
 const projects = [
   {
@@ -19,19 +19,19 @@ const projects = [
     titleTop: "Zepto Inventory Analysis",
     titleBottom: "Chemotherapy",
     image: zepto,
-    badge: "See Consultation",
+    badge: "Inventory",
   },
   {
     titleTop: "Mobile Sales Dashboard",
     titleBottom: "Therapy",
     image: mobile,
-    badge: "See Consultation",
+    badge: "Sales",
   },
   {
     titleTop: "Blood",
     titleBottom: "Transfusion",
     image: imgBlood,
-    badge: "See Consultation",
+    badge: "Product",
   },
 ];
 
