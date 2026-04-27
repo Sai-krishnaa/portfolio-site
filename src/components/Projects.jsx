@@ -3,28 +3,28 @@ import React from "react";
 import bg from "../assets/img9.jpg";
 
 // import card images (use your real filenames here)
-import imgPhysio from "../assets/img4.jpeg";
-import imgCancer from "../assets/img5.jpeg";
-import imgRadiation from "../assets/img6.jpeg";
+import tranaction from "../assets/tr.png";
+import zepto from "../assets/zp.png";
+import mobile from "../assets/md.png";
 import imgBlood from "../assets/img7.jpeg";
 
 const projects = [
   {
-    titleTop: "Zepto Inventory ",
-    titleBottom: "Inventory Analysis",
-    image: imgPhysio,
-    badge: "See Consultation",
+    titleTop: "Transaction Reconciliation Exception System",
+    titleBottom: "Transaction Processing",
+    image: tranaction,
+    badge: "Fintech",
   },
   {
-    titleTop: "Cancer",
+    titleTop: "Zepto Inventory Analysis",
     titleBottom: "Chemotherapy",
-    image: imgCancer,
+    image: zepto,
     badge: "See Consultation",
   },
   {
-    titleTop: "Best Radiation",
+    titleTop: "Mobile Sales Dashboard",
     titleBottom: "Therapy",
-    image: imgRadiation,
+    image: mobile,
     badge: "See Consultation",
   },
   {
@@ -44,12 +44,12 @@ function ProjectCard({ project }) {
         <img
           src={project.image}
           alt={project.titleTop}
-          className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-[0.65]"
+          className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-[0.85]"
         />
       </div>
 
       {/* gradient top mask */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/20 via-black/20 to-transparent pointer-events-none" />
 
       {/* header badges */}
       <div className="absolute inset-x-0 top-0 flex items-start justify-between px-4 pt-4 text-[11px] z-10">
@@ -66,7 +66,7 @@ function ProjectCard({ project }) {
         className="
           absolute inset-x-0 bottom-0
           translate-y-full group-hover:translate-y-0
-          transition-transform duration-500 ease-out
+          transition-transform duration-300 ease-out
           p-5 rounded-t-3xl
           bg-white/95 backdrop-blur-md
           z-20
@@ -122,18 +122,8 @@ export default function ProjectsSection() {
             </div>
           </div>
 
-          {/* heading */}
-          <div className="mt-8 flex justify-center">
-            <p className="max-w-3xl text-center text-[26px] md:text-[32px] leading-snug font-medium text-white">
-              Data-driven{" "}
-              <span className="text-blue-700"><b>solutions crafted to</b></span>{" "}
-              <span className="text-gray-200">solve real problems</span>{" "}
-              with accuracy and simplicity
-            </p>
-          </div>
-
           {/* grid */}
-          <div className="mt-12">
+          <div className="mt-13">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {projects.map((p) => (
                 <ProjectCard key={p.titleTop + p.titleBottom} project={p} />
