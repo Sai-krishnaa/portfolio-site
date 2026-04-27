@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import img2 from "../assets/img2.jpeg";
+// import img2 from "../assets/img2.jpeg";
+import img2 from "../assets/ab.png";
 import sql from "../assets/sql.svg"
 import excel from "../assets/excel.svg"
 import powerbi from "../assets/power-bi.svg"
