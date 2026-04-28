@@ -1,137 +1,86 @@
-// src/components/IdeaSection.jsx
-import React, { useState } from "react"
-import billboard from "../assets/billboard.png" // replace with your image
+import { useState } from "react";
+import python from "../assets/python.svg";
+import powerbi from "../assets/power-bi.svg";
+import fabric from "../assets/fabric.png";
+import NumPy from "../assets/NumPy.svg";
+import bg from "../assets/PM.png";
 
-export default function IdeaSection() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" })
-
-  function handleChange(e) {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
+export default function ContactSection() {
+  const [email, setEmail] = useState("");
 
   function handleSubmit(e) {
-    e.preventDefault()
-    // TODO: handle submit
+    e.preventDefault();
   }
 
   return (
-    <section className="bg-white py-16">
-      <div className="container-wide px-4 md:px-6">
-        <div className="grid gap-8 md:grid-cols-2 items-start">
-          {/* LEFT: contact card */}
-          <div className="rounded-[32px] bg-white shadow-[0_22px_70px_rgba(15,23,42,0.12)] px-6 py-7 md:px-8 md:py-8">
-            {/* header */}
-            <div className="flex items-center justify-between mb-6">
-              <div className="flex items-center gap-3">
-                <div className="h-9 w-9 rounded-full bg-slate-900 text-white flex items-center justify-center text-sm font-semibold">
-                  SK
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-slate-900">
-                    Have an idea?
-                  </p>
-                  <p className="text-xs text-slate-500">
-                    Feel free to contact me
-                  </p>
-                </div>
-              </div>
-              {/* corner marks (optional) */}
-              <div className="hidden md:block text-slate-300 text-xl leading-none">
-                ⌗
-              </div>
-            </div>
+    <section
+      className="w-[95%] mx-auto relative py-38 overflow-hidden bg-cover bg-center rounded-3xl"
+      style={{
+        backgroundImage: `url(${bg})`,
+      }}
+    >
 
-            {/* form block */}
-            <form
-              onSubmit={handleSubmit}
-              className="space-y-3 rounded-2xl bg-slate-50/80 p-4 border border-slate-100"
-            >
-              <input
-                name="name"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Your Name"
-                className="w-full rounded-xl bg-white px-3 py-2 text-xs md:text-sm border border-slate-200 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
-              />
-              <input
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="Your Email"
-                className="w-full rounded-xl bg-white px-3 py-2 text-xs md:text-sm border border-slate-200 outline-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
-              />
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                rows={3}
-                placeholder="Shortly tell me what you want to create"
-                className="w-full rounded-xl bg-white px-3 py-2 text-xs md:text-sm border border-slate-200 outline-none resize-none focus:border-sky-500 focus:ring-2 focus:ring-sky-200"
-              />
+      {/* 🔥 OVERLAY (IMPORTANT for readability) */}
+      <div className="absolute inset-0" />
 
-              <button
-                type="submit"
-                className="mt-2 inline-flex w-full items-center justify-center rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 py-2.5 text-sm font-medium text-white shadow-lg shadow-sky-400/40 hover:from-sky-600 hover:to-indigo-700 transition"
-              >
-                Contact me
-              </button>
-            </form>
+      {/* 🔥 FLOATING ICONS */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <FloatingIcon src={fabric} className="top-10 left-20" />
+        <FloatingIcon src={python} className="top-16 right-20" />
+        <FloatingIcon src={NumPy} className="bottom-20 left-32" />
+        <FloatingIcon src={powerbi} className="bottom-24 right-32" />
+      </div>
 
-            {/* divider + socials */}
-            <div className="mt-5">
-              <div className="flex items-center gap-3 text-[11px] text-slate-400 mb-3">
-                <span className="flex-1 h-px bg-slate-200" />
-                <span>or</span>
-                <span className="flex-1 h-px bg-slate-200" />
-              </div>
+      {/* 🔥 CONTENT */}
+      <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
 
-              <div className="grid grid-cols-3 gap-3 text-[11px]">
-                {[
-                  { label: "LinkedIn", short: "in" },
-                  { label: "Instagram", short: "ig" },
-                  { label: "Twitter", short: "X" },
-                ].map((s) => (
-                  <button
-                    key={s.label}
-                    type="button"
-                    className="flex flex-col items-center justify-center gap-1 rounded-2xl border border-slate-200 bg-slate-50/80 py-2 hover:bg-slate-100 transition"
-                  >
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-slate-900 text-[11px] text-white">
-                      {s.short}
-                    </span>
-                    <span className="text-[10px] text-slate-600">
-                      {s.label}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
+        {/* INPUT */}
+        <form
+          onSubmit={handleSubmit}
+          className="mx-auto mb-10 flex items-center justify-between gap-2 w-full max-w-md bg-white/60 backdrop-blur-xl border border-white/40 shadow-[0_10px_40px_rgba(0,0,0,0.1)] rounded-full px-3 py-2"
+        >
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="flex-1 bg-transparent outline-none px-3 text-sm text-slate-700 placeholder:text-slate-400"
+          />
 
-          {/* RIGHT: image + text */}
-          <div className="flex flex-col justify-between">
-            <div className="rounded-[32px] bg-white shadow-[0_22px_70px_rgba(15,23,42,0.12)] p-4 md:p-5 mb-6">
-              <div className="overflow-hidden rounded-2xl aspect-[16/9] bg-slate-900">
-                <img
-                  src={billboard}
-                  alt="Billboard"
-                  className="h-full w-full object-cover"
-                />
-              </div>
-            </div>
+          <button
+            type="submit"
+            className="px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-sm font-medium shadow-lg hover:scale-105 transition"
+          >
+            Submit
+          </button>
+        </form>
 
-            <p className="px-2 md:px-4 text-right md:text-left text-base md:text-lg font-medium text-slate-900 leading-relaxed">
-              Your ideas matter
-              <br />
-              <span className="font-normal">
-                — let&apos;s bring them to life.
-              </span>
-            </p>
-          </div>
-        </div>
+        {/* HEADING */}
+        <h1 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
+          Let’s <span className="text-blue-600">connect</span> and create something <span className="text-blue-600">real</span>
+        </h1>
+
+        {/* DESCRIPTION */}
+        <p className="mt-4 text-slate-600 text-sm md:text-base max-w-xl mx-auto">
+         From ideas to execution, we create solutions that drive real impact.
+        </p>
+
       </div>
     </section>
-  )
+  );
+}
+
+/* 🔥 FLOATING ICON COMPONENT */
+function FloatingIcon({ src, className }) {
+  return (
+    <div
+      className={`absolute ${className} w-16 h-16 rounded-full 
+      bg-white/20 backdrop-blur-xl border border-white/30 
+      shadow-[0_10px_30px_rgba(0,0,0,0.15)] 
+      flex items-center justify-center 
+      animate-float`}
+    >
+      <img src={src} alt="" className="w-8 h-8 object-contain" />
+    </div>
+  );
 }

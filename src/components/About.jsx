@@ -168,7 +168,7 @@ export default function About() {
 
         {/* Right column (col span 5): Tall image card */}
         <aside className="lg:col-span-5 flex justify-center">
-          <div className="rounded-2xl overflow-hidden shadow-md bg-gray-50 aspect-[3/5] max-h-[650px] w-full">
+          <div className="rounded-2xl overflow-hidden shadow-md bg-gray-50 aspect-3/5 max-h-[650px] w-full">
             <img src={img2} alt="Award hero" className="w-full h-full object-cover" />
           </div>
         </aside>
