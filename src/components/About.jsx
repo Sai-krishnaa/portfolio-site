@@ -5,7 +5,7 @@ import sql from "../assets/sql.svg"
 import excel from "../assets/excel.svg"
 import powerbi from "../assets/power-bi.svg"
 import python from "../assets/python.svg"
-import numpy from "../assets/numpy.svg"
+import numpy from "../assets/NumPy.svg"
 import git from "../assets/git.svg"
 import fabric from "../assets/fabric.png"
 
