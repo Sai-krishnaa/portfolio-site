@@ -1,9 +1,18 @@
 import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import zeptoImage from "../assets/zepto.png";
-import reconciliation from "../assets/reconciliation.png";
-import mobile from "../assets/motorola.png";
+
+/* ================= CARD IMAGES ================= */
+
+import reconciliationCard from "../assets/tr.png";
+import zeptoCard from "../assets/tr.png";
+import mobileCard from "../assets/tr.png";
+
+/* ================= BANNER IMAGES ================= */
+
+import reconciliationBanner from "../assets/PM.png";
+import zeptoBanner from "../assets/PM.png";
+import mobileBanner from "../assets/PM.png";
 
 export default function Works() {
   const navigate = useNavigate();
@@ -14,113 +23,179 @@ export default function Works() {
       id: "reconciliation",
       title: "Transaction Reconciliation System",
       desc: "Automated cross-platform transaction matching system",
-      image: reconciliation,
+
+      /* CARD IMAGE */
+      cardImage: reconciliationCard,
+
+      /* PROJECT PAGE BANNER */
+      bannerImage: reconciliationBanner,
     },
-    {
-      id: "reconciliation",
-      title: "Transaction Reconciliation System",
-      desc: "Automated cross-platform transaction matching system",
-      image: reconciliation,
-    },
+
     {
       id: "zepto",
       title: "Zepto Inventory Analysis",
-      desc: "Real-time emergency dispatch & hospital pre-alert",
-      image: zeptoImage,
+      desc: "Real-time inventory intelligence dashboard",
+
+      cardImage: zeptoCard,
+      bannerImage: zeptoBanner,
     },
+
     {
       id: "mobile-sales",
       title: "Mobile Sales Performance",
-      desc: "Automatic candidate filtering using NLP",
-      image: mobile,
+      desc: "Interactive mobile sales analytics system",
+
+      cardImage: mobileCard,
+      bannerImage: mobileBanner,
     },
   ];
 
   const next = () => {
-    setIndex((prev) => (prev < projects.length - 1 ? prev + 1 : 0));
+    setIndex((prev) =>
+      prev < projects.length - 1 ? prev + 1 : 0
+    );
   };
 
   const prev = () => {
-    setIndex((prev) => (prev > 0 ? prev - 1 : projects.length - 1));
+    setIndex((prev) =>
+      prev > 0 ? prev - 1 : projects.length - 1
+    );
   };
 
   return (
     <section className="min-h-screen w-full bg-white text-gray-900 px-6 md:px-16 pt-12 pb-20">
-      <div className="w-full max-w-7xl">
+
+      <div className="w-full max-w-7xl mx-auto">
 
         {/* BACK BUTTON */}
+
         <div className="mb-10 flex items-center">
+
           <button
             onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-gray-700 hover:text-black transition font-medium"
+            className="flex items-center gap-3 text-gray-700 hover:text-black transition font-medium"
           >
-            <span className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
+
+            <span className="w-11 h-11 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-300">
               ←
             </span>
+
             Back
+
           </button>
+
         </div>
 
         {/* MAIN GRID */}
+
         <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-start">
 
           {/* LEFT SIDE */}
+
           <div className="space-y-8">
 
             {/* HEADER */}
-            <div className="space-y-4">
-              <span className="text-xs tracking-widest text-white font-semibold uppercase bg-orange-500 px-3 py-1 rounded-full shadow-lg shadow-orange-500/30">
+
+            <div className="space-y-5">
+
+              <span className="text-xs tracking-widest text-white font-semibold uppercase bg-orange-500 px-4 py-2 rounded-full shadow-lg shadow-orange-500/30">
+
                 My Work
+
               </span>
 
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.08] tracking-tight max-w-3xl">
-                Built to solve<br />
-                <span className="text-orange-500">Real World</span> <br />
-                <span className="text-gray-400">Problems Every Day</span>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight max-w-3xl">
+
+                Built to solve
+                <br />
+
+                <span className="text-orange-500">
+                  Real World
+                </span>
+
+                <br />
+
+                Problems Every Day
+
               </h2>
+
             </div>
 
             {/* DESCRIPTION */}
+
             <p className="text-gray-600 text-lg leading-relaxed max-w-lg">
-              I design and build products that solve real problems — not tutorial apps.
-              Each project focuses on performance, scalability and real-world usability.
+
+              I design and build products that solve
+              real business problems — not tutorial apps.
+              Every project focuses on usability,
+              scalability and meaningful impact.
+
             </p>
 
             {/* NAVIGATION */}
+
             <div className="flex gap-4 pt-2">
+
               <button
                 onClick={prev}
-                className="btnNavLight"
+                className="w-12 h-12 rounded-full bg-orange-100 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center"
               >
                 ←
               </button>
 
               <button
                 onClick={next}
-                className="btnNavLight"
+                className="w-12 h-12 rounded-full bg-orange-100 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center"
               >
                 →
               </button>
+
             </div>
 
             {/* DOTS */}
+
             <div className="flex gap-2">
+
               {projects.map((_, i) => (
                 <div
                   key={i}
                   onClick={() => setIndex(i)}
                   className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                    i === index ? "w-8 bg-gray-900" : "w-2 bg-gray-300"
+                    i === index
+                      ? "w-8 bg-orange-500"
+                      : "w-2 bg-gray-300"
                   }`}
                 />
               ))}
+
             </div>
 
           </div>
 
           {/* RIGHT CARD */}
-          <div className="relative md:-mt-10 lg:-mt-16 h-[520px] md:h-[620px] w-full overflow-hidden rounded-3xl shadow-2xl bg-gray-900">
+
+          <div
+            className="
+            relative
+            md:-mt-8
+            lg:-mt-12
+            xl:-mt-10
+            w-full
+            h-[500px]
+            md:h-[540px]
+            lg:h-[560px]
+            xl:h-[580px]
+            max-w-[720px]
+            ml-auto
+            overflow-hidden
+            rounded-[40px]
+            shadow-2xl
+            bg-gray-900
+          "
+          >
+
             <AnimatePresence mode="wait">
+
               <ProjectSlide
                 key={index}
                 project={projects[index]}
@@ -131,142 +206,235 @@ export default function Works() {
                 setIndex={setIndex}
                 navigate={navigate}
               />
+
             </AnimatePresence>
+
           </div>
 
         </div>
+
       </div>
+
     </section>
   );
 }
 
-/* PROJECT CARD */
+/* ================= PROJECT CARD ================= */
 
-function ProjectSlide({ project, prev, next, index, projects, setIndex, navigate }) {
+function ProjectSlide({
+  project,
+  prev,
+  next,
+  index,
+  projects,
+  setIndex,
+  navigate,
+}) {
+
+  const isDragging = useRef(false);
+  const moved = useRef(false);
+
+  const [showHint, setShowHint] = useState(true);
 
   const handleDragEnd = (event, info) => {
+
     const threshold = 50;
-    const velocityThreshold = 500; // px/sec - faster flicks also count
+    const velocityThreshold = 500;
 
-    // if user swiped fast enough or moved past threshold, go prev/next
-    if (info.offset.x > threshold || info.velocity.x > velocityThreshold) prev();
-    if (info.offset.x < -threshold || info.velocity.x < -velocityThreshold) next();
+    if (
+      info.offset.x > threshold ||
+      info.velocity.x > velocityThreshold
+    ) {
+      prev();
+    }
 
-    // mark dragging finished after handling
-    // small delay so onTap doesn't fire immediately after drag end
+    if (
+      info.offset.x < -threshold ||
+      info.velocity.x < -velocityThreshold
+    ) {
+      next();
+    }
+
     setTimeout(() => {
       isDragging.current = false;
       moved.current = false;
     }, 50);
+
     setShowHint(false);
   };
-
-  const isDragging = useRef(false);
-  const [showHint, setShowHint] = useState(true);
-  const moved = useRef(false);
 
   return (
     <motion.div
       initial={{ x: 120, opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ x: -120, opacity: 0 }}
-      transition={{ type: "spring", stiffness: 200, damping: 26 }}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        damping: 26,
+      }}
       drag="x"
       dragElastic={0.16}
-      onDragStart={() => { isDragging.current = true; moved.current = false; setShowHint(false); }}
+      whileDrag={{ scale: 0.995 }}
+      onDragStart={() => {
+        isDragging.current = true;
+        moved.current = false;
+        setShowHint(false);
+      }}
       onDrag={(event, info) => {
-        if (Math.abs(info.offset.x) > 8 || Math.abs(info.offset.y) > 8) moved.current = true;
+        if (
+          Math.abs(info.offset.x) > 8 ||
+          Math.abs(info.offset.y) > 8
+        ) {
+          moved.current = true;
+        }
       }}
       onDragEnd={handleDragEnd}
       onTap={() => {
-        // only navigate on tap if the user didn't move (tap, not swipe)
-        if (!moved.current) navigate(`/project/${project.id}`);
+
+        if (!moved.current) {
+
+          navigate(`/project/${project.id}`, {
+            state: {
+              project,
+            },
+          });
+        }
       }}
-      whileDrag={{ scale: 0.995 }}
-      className="absolute inset-0 p-7 md:p-12 lg:p-16 flex flex-col justify-between text-white cursor-grab active:cursor-grabbing bg-cover bg-center group"
+      className="
+      absolute
+      inset-0
+      p-7
+      md:p-12
+      lg:p-14
+      flex
+      flex-col
+      justify-between
+      text-white
+      cursor-grab
+      active:cursor-grabbing
+      bg-cover
+      bg-center
+      group
+    "
       style={{
-        backgroundImage: `url('${project.image}')`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
+        backgroundImage: `url('${project.cardImage}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
       }}
     >
-      {/* VIGNETTE OVERLAY - Bottom to Top */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/0 to-transparent pointer-events-none" />
-      
+
+      {/* ORANGE OVERLAY */}
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-orange-500/10 pointer-events-none" />
+
       {/* HOVER OVERLAY */}
+
       <motion.div
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="absolute inset-0 bg-black/70 pointer-events-none"
+        className="absolute inset-0 bg-black/60 pointer-events-none"
       />
 
-      {/* SWIPE HINT (hand + arrow) */}
+      {/* SWIPE HINT */}
+
       {showHint && (
+
         <motion.div
           className="absolute top-28 right-8 z-30 pointer-events-none flex items-center gap-3"
           initial={{ opacity: 0 }}
-          animate={{ x: [0, -28, 0], opacity: [0, 1, 0.6] }}
-          transition={{ repeat: Infinity, duration: 1.6, ease: "easeInOut" }}
+          animate={{
+            x: [0, -28, 0],
+            opacity: [0, 1, 0.6],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 1.6,
+            ease: "easeInOut",
+          }}
         >
-          <div className="bg-white/20 text-white/90 p-2 rounded-full shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M9.5 2.5C8.12 2.5 7 3.62 7 5v6.09C6.39 11.36 6 12.16 6 13v5c0 .55.45 1 1 1h6.5c.95 0 1.77-.6 2.03-1.47l1.02-3.16c.39-1.2-.38-2.48-1.7-2.48H13v-4c0-1.93-1.57-3.5-3.5-3.5z"/>
-            </svg>
+
+          <div className="bg-orange-500/80 text-white p-3 rounded-full shadow-lg shadow-orange-500/30">
+            ←
           </div>
 
-          <div className="bg-white/10 text-white/90 p-3 rounded-full shadow-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </div>
         </motion.div>
       )}
 
       {/* TOP BAR */}
-      <div className="flex justify-between items-center">
+
+      <div className="flex justify-between items-center relative z-20">
+
         <div className="flex gap-2">
+
           {projects.map((_, i) => (
             <div
               key={i}
               onClick={() => setIndex(i)}
               className={`h-1.5 rounded-full transition-all cursor-pointer ${
-                i === index ? "w-8 bg-white" : "w-2 bg-white/40"
+                i === index
+                  ? "w-8 bg-orange-500"
+                  : "w-2 bg-white/40"
               }`}
             />
           ))}
+
         </div>
 
         <div className="flex gap-3">
+
           <button
             onClick={prev}
-            className="btnNav"
+            className="w-14 h-14 rounded-full bg-orange-500/80 backdrop-blur-md text-white flex items-center justify-center hover:bg-orange-500 transition-all duration-300 shadow-lg shadow-orange-500/20"
           >
             ←
           </button>
 
           <button
             onClick={next}
-            className="btnNav"
+            className="w-14 h-14 rounded-full bg-orange-500/80 backdrop-blur-md text-white flex items-center justify-center hover:bg-orange-500 transition-all duration-300 shadow-lg shadow-orange-500/20"
           >
             →
           </button>
+
         </div>
+
       </div>
 
-      {/* BOTTOM TEXT */}
-      <div className="space-y-2 relative z-10">
-        <h2 className="text-2xl md:text-3xl font-bold">{project.title}</h2>
+      {/* BOTTOM CONTENT */}
 
-        <p className="text-white/70 text-base">{project.desc}</p>
+      <div className="space-y-4 relative z-20">
+
+        <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-xl">
+
+          {project.title}
+
+        </h2>
+
+        <p className="text-white/80 text-lg max-w-lg leading-relaxed">
+
+          {project.desc}
+
+        </p>
 
         <button
-          onClick={() => navigate(`/project/${project.id}`)}
-          className="mt-1 px-3 py-2 bg-white text-gray-900 font-semibold rounded-full hover:bg-gray-200 transition"
+          onClick={() =>
+            navigate(`/project/${project.id}`, {
+              state: {
+                project,
+              },
+            })
+          }
+          className="mt-2 px-6 py-3 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-all duration-300 shadow-lg shadow-orange-500/30"
         >
+
           View Project →
+
         </button>
+
       </div>
+
     </motion.div>
   );
 }
