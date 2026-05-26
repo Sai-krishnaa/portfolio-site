@@ -5,8 +5,9 @@ import sql from "../assets/sql.svg"
 import excel from "../assets/excel.svg"
 import powerbi from "../assets/power-bi.svg"
 import python from "../assets/python.svg"
+import numpy from "../assets/numpy.svg"
 import git from "../assets/git.svg"
-import n8n from "../assets/n8n.svg"
+import fabric from "../assets/fabric.png"
 
 
 function DotRed() {
@@ -91,8 +92,9 @@ export default function About() {
     { icon: excel, name: "Excel" },
     { icon: powerbi, name: "Power BI" },
     { icon: python, name: "Python" },
+    { icon: numpy, name: "NumPy" },
+    { icon: fabric, name: "Fabric" },
     { icon: git, name: "Git" },
-    { icon: n8n, name: "n8n" },
   ].map((skill) => (
     <div
       key={skill.name}

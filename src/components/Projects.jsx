@@ -1,8 +1,5 @@
-// src/components/ProjectsSection.jsx
 import React from "react";
-import bg from "../assets/img9.jpg";
 
-// import card images (use your real filenames here)
 import tranaction from "../assets/tr.png";
 import zepto from "../assets/zp.png";
 import mobile from "../assets/md.png";
@@ -10,26 +7,29 @@ import imgBlood from "../assets/sh.png";
 
 const projects = [
   {
-    titleTop: "Transaction Reconciliation Exception System",
-    titleBottom: "Transaction Processing",
+    title: "Transaction Reconciliation",
+    subtitle: "Financial matching & exception tracking",
     image: tranaction,
     badge: "Fintech",
   },
+
   {
-    titleTop: "Zepto Inventory Analysis",
-    titleBottom: "Chemotherapy",
+    title: "Zepto Inventory Analysis",
+    subtitle: "Inventory insights & stock optimization",
     image: zepto,
     badge: "Inventory",
   },
+
   {
-    titleTop: "Mobile Sales Dashboard",
-    titleBottom: "Therapy",
+    title: "Mobile Sales Dashboard",
+    subtitle: "Interactive KPI & sales intelligence",
     image: mobile,
     badge: "Sales",
   },
+
   {
-    titleTop: "Blood",
-    titleBottom: "Transfusion",
+    title: "Product Analysis",
+    subtitle: "Product growth & performance insights",
     image: imgBlood,
     badge: "Product",
   },
@@ -37,115 +37,222 @@ const projects = [
 
 function ProjectCard({ project }) {
   return (
-    <article className="group relative rounded-3xl overflow-hidden bg-slate-900 text-white shadow-[0_18px_45px_rgba(15,23,42,0.35)] min-h-[420px] md:min-h-[460px] transition-transform duration-300 hover:-translate-y-3">
+    <article
+      className="
+      group
+      relative
+      rounded-[34px]
+      overflow-hidden
+      bg-black
+      min-h-[620px]
+      transition-all
+      duration-500
+      hover:-translate-y-2
+    "
+    >
 
-      {/* Image with hover dim */}
-      <div className="h-[420px] md:h-[600px] w-full overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.titleTop}
-          className="w-full h-full object-cover transition-all duration-500 ease-out group-hover:scale-105 group-hover:brightness-[0.85]"
-        />
-      </div>
+      {/* IMAGE */}
 
-      {/* gradient top mask */}
-      <div className="absolute inset-0 bg-linear-to-t from-black/20 via-black/20 to-transparent pointer-events-none" />
+      <img
+        src={project.image}
+        alt={project.title}
+        className="
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        transition-transform
+        duration-700
+        group-hover:scale-105
+      "
+      />
 
-      {/* header badges */}
-      <div className="absolute inset-x-0 top-0 flex items-start justify-between px-4 pt-4 text-[11px] z-10">
-        <button className="rounded-full bg-black/40 px-2 py-1 text-[10px] uppercase tracking-wide text-white/90">
+      {/* OVERLAY */}
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
+
+      {/* TOP */}
+
+      <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5 z-20">
+
+        <button className="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md text-white flex items-center justify-center">
           •••
         </button>
-        <button className="rounded-full bg-white/95 px-3 py-1 text-[10px] font-medium text-slate-900">
+
+        <button className="px-4 py-2 rounded-full bg-white text-black text-xs font-medium">
           {project.badge}
         </button>
+
       </div>
 
-      {/* BOTTOM SLIDE-UP DETAILS */}
-      <div
-        className="
-          absolute inset-x-0 bottom-0
-          translate-y-full group-hover:translate-y-0
-          transition-transform duration-300 ease-out
-          p-5 rounded-t-3xl
-          bg-white/95 backdrop-blur-md
-          z-20
-          flex items-center justify-between
-        "
-      >
-        <div>
-          <h3 className="text-sm font-semibold text-slate-900">
-            {project.titleTop} <br /> {project.titleBottom}
-          </h3>
-          <p className="text-xs text-slate-500 mt-1">
-            A data-focused solution crafted with accuracy & clarity.
-          </p>
-        </div>
+      {/* CONTENT */}
 
-        {/* Rotating arrow */}
-        <button className="h-10 w-10 flex items-center justify-center rounded-full bg-slate-900 text-white shadow transition-transform duration-500 group-hover:rotate-90">
-          ↗
-        </button>
+      <div className="absolute bottom-0 left-0 right-0 p-7 z-20">
+
+        <div
+          className="
+          translate-y-8
+          opacity-0
+          group-hover:translate-y-0
+          group-hover:opacity-100
+          transition-all
+          duration-500
+        "
+        >
+
+          <div className="bg-white rounded-[28px] p-5 flex items-end justify-between gap-4">
+
+            <div>
+
+              <h3 className="text-xl font-semibold text-black leading-tight">
+                {project.title}
+              </h3>
+
+              <p className="text-sm text-gray-500 mt-2 leading-relaxed">
+                {project.subtitle}
+              </p>
+
+            </div>
+
+            <button
+              className="
+              min-w-[52px]
+              h-[52px]
+              rounded-full
+              bg-black
+              text-white
+              flex
+              items-center
+              justify-center
+              transition-transform
+              duration-500
+              group-hover:rotate-45
+            "
+            >
+              ↗
+            </button>
+
+          </div>
+        </div>
       </div>
     </article>
   );
 }
 
-
 export default function ProjectsSection() {
   return (
-    <section id="projects" className="py-16">
-      <div
-        className="w-[95%] mx-auto rounded-3xl overflow-hidden px-4 md:px-6 py-20 relative"
-        style={{
-          backgroundImage: `url(${bg})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
-        <div className="absolute inset-0 bg-black/10 z-1" />
+    <section
+      id="projects"
+      className="py-28 bg-white"
+    >
 
-        <div className="relative z-2">
-          {/* top meta row */}
-          <div className="flex items-center justify-between text-[11px] uppercase tracking-[0.18em] text-white/80">
-            <button className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 backdrop-blur-sm px-4 py-1 text-white">
-              <span className="h-[3px] w-[18px] rounded-full bg-violet-400" />
-              <span>Projects</span>
-            </button>
+      <div className="w-[95%] mx-auto">
 
-            <div className="hidden md:flex items-center gap-3">
-              <span className="h-px w-10 bg-white/40" />
-              <span className="text-[10px] tracking-[0.18em] text-white/80">
-                Work that turns data into decisions
+        {/* TOP */}
+
+        <div className="mb-16">
+
+          {/* MINI LABEL */}
+
+          <div className="inline-flex items-center gap-3 rounded-full border border-gray-200 px-4 py-2 text-sm text-gray-600 bg-white">
+
+            <span className="w-2 h-2 rounded-full bg-orange-500" />
+
+            Selected Work
+
+          </div>
+
+          {/* PREMIUM HEADING */}
+
+          <div className="mt-7">
+
+            <h2
+              className="
+              text-4xl
+              md:text-6xl
+              font-semibold
+              tracking-[-0.05em]
+              leading-[0.95]
+              text-black
+              max-w-3xl
+            "
+            >
+              Crafted to solve
+              <br />
+
+              <span className="text-orange-500">
+                real business
               </span>
-            </div>
+
+              {" "}problems through
+              modern analytics.
+            </h2>
+
           </div>
 
-          {/* grid */}
-          <div className="mt-13">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {projects.map((p) => (
-                <ProjectCard key={p.titleTop + p.titleBottom} project={p} />
-              ))}
-            </div>
-
-            {/* Explore more */}
-            <div className="mt-9 flex justify-center">
-              <button
-                className="group inline-flex items-center gap-3 rounded-full bg-white text-slate-900 px-5 py-2.5 shadow-lg transition-all duration-300 hover:shadow-2xl"
-                aria-label="Explore more projects"
-              >
-                <span className="text-sm font-medium">Explore more projects</span>
-
-                {/* circular mini-arrow with subtle spin on hover */}
-                <span className="inline-flex items-center justify-center bg-slate-900 text-white w-8 h-8 rounded-full transition-transform duration-500 group-hover:rotate-90">
-                  ↗
-                </span>
-              </button>
-            </div>
-          </div>
         </div>
+
+        {/* PROJECT GRID */}
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-7">
+
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+            />
+          ))}
+
+        </div>
+
+        {/* BUTTON */}
+
+        <div className="mt-16 flex justify-center">
+
+          <button
+            className="
+            group
+            inline-flex
+            items-center
+            gap-4
+            rounded-full
+            bg-black
+            text-white
+            px-7
+            py-4
+            hover:bg-orange-500
+            transition-all
+            duration-300
+          "
+          >
+
+            <span className="text-sm font-medium">
+              View All Projects
+            </span>
+
+            <span
+              className="
+              w-10
+              h-10
+              rounded-full
+              bg-white
+              text-black
+              flex
+              items-center
+              justify-center
+              transition-transform
+              duration-500
+              group-hover:rotate-45
+            "
+            >
+              ↗
+            </span>
+
+          </button>
+
+        </div>
+
       </div>
     </section>
   );

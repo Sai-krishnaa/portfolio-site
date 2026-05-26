@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 import flag from "../assets/flag.png";
 import heroBanner from "../assets/PM.png";   // Desktop
@@ -9,64 +10,6 @@ import linkedin from "../assets/linkedin.svg";
 import github from "../assets/github.svg";
 import leetcode from "../assets/leetcode.svg";
 import hackerank from "../assets/hackerank.svg";
-
-/* ===================== NAVBAR ===================== */
-export function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <>
-      <header className="w-full relative z-50 bg-[#f3f4f6]">
-        <div className="w-[95%] mx-auto px-4 md:px-6 py-4 flex items-center justify-between">
-          <div className="text-2xl md:text-3xl font-bold">
-            Sai Krishna
-          </div>
-
-          <nav className="hidden md:flex items-center gap-10 text-gray-700">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#case-study">Case Study</a>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <button className="hidden md:inline-flex px-6 py-2.5 rounded-full bg-black text-white hover:bg-orange-600">
-              Contact Us
-            </button>
-
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="w-11 h-11 rounded-full bg-orange-600 text-white flex items-center justify-center"
-            >
-              ↗
-            </button>
-          </div>
-        </div>
-      </header>
-
-      {/* MOBILE MENU */}
-      <div className={`fixed inset-0 z-40 md:hidden ${menuOpen ? "translate-x-0" : "translate-x-full"} transition`}>
-        <div className="absolute inset-0 bg-black/40" onClick={() => setMenuOpen(false)} />
-        <div className="absolute right-0 top-0 h-full w-full bg-white p-6 flex flex-col">
-          <div className="flex justify-end mb-8">
-            <button onClick={() => setMenuOpen(false)} className="w-10 h-10 rounded-full bg-orange-600 text-white">↗</button>
-          </div>
-
-          <nav className="flex flex-col gap-6 text-lg">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#case-study">Case Study</a>
-          </nav>
-
-          <button className="mt-auto px-6 py-3 rounded-full bg-orange-600 text-white">
-            Contact Us
-          </button>
-        </div>
-      </div>
-    </>
-  );
-}
 
 /* ===================== SOCIAL ===================== */
 function SocialPill({ icon, platform, username, url }) {

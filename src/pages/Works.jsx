@@ -17,6 +17,12 @@ export default function Works() {
       image: reconciliation,
     },
     {
+      id: "reconciliation",
+      title: "Transaction Reconciliation System",
+      desc: "Automated cross-platform transaction matching system",
+      image: reconciliation,
+    },
+    {
       id: "zepto",
       title: "Zepto Inventory Analysis",
       desc: "Real-time emergency dispatch & hospital pre-alert",
@@ -63,13 +69,13 @@ export default function Works() {
 
             {/* HEADER */}
             <div className="space-y-4">
-              <span className="text-xs tracking-widest text-white font-semibold uppercase bg-[#48cae4] px-3 py-1 rounded-full">
+              <span className="text-xs tracking-widest text-white font-semibold uppercase bg-orange-500 px-3 py-1 rounded-full shadow-lg shadow-orange-500/30">
                 My Work
               </span>
 
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.08] tracking-tight max-w-3xl">
-                Built to Solve <br />
-                Real World <br />
+                Built to solve<br />
+                <span className="text-orange-500">Real World</span> <br />
                 <span className="text-gray-400">Problems Every Day</span>
               </h2>
             </div>
@@ -113,7 +119,7 @@ export default function Works() {
           </div>
 
           {/* RIGHT CARD */}
-          <div className="relative h-[520px] md:h-[620px] w-full overflow-hidden rounded-3xl shadow-2xl bg-gray-900">
+          <div className="relative md:-mt-10 lg:-mt-16 h-[520px] md:h-[620px] w-full overflow-hidden rounded-3xl shadow-2xl bg-gray-900">
             <AnimatePresence mode="wait">
               <ProjectSlide
                 key={index}
