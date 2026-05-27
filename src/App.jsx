@@ -12,6 +12,7 @@ import Skills from "./components/Skills";
 import WorksGallery from "./components/WorksGallery";
 import IdeaContactForm from "./components/IdeaContactForm";
 import Works from "./pages/Works";
+import Schneider from "./pages/projects/schneider";
 import Reconciliation from "./pages/projects/Reconciliation";
 import Zepto from "./pages/projects/Zepto";
 import MobileSales from "./pages/projects/MobileSales";
@@ -65,6 +66,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/works" element={<Works />} />
+        <Route path="/project/Schneider" element={<Schneider />} />
         <Route path="/project/reconciliation" element={<Reconciliation />} />
         <Route path="/project/zepto" element={<Zepto />} />
         <Route path="/project/mobile-sales" element={<MobileSales />} />

@@ -368,9 +368,9 @@ export default function Navbar() {
 
           <div className="hidden lg:flex items-center gap-3">
 
-            <button className="px-7 py-3 rounded-full bg-black text-white hover:bg-orange-600 transition-all duration-300">
+            <a href="#contact" className="px-7 py-3 rounded-full bg-black text-white hover:bg-orange-600 transition-all duration-300 inline-flex items-center justify-center">
               Contact Us
-            </button>
+            </a>
 
             <button className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center hover:rotate-45 transition-all duration-300">
 
@@ -441,9 +441,9 @@ export default function Navbar() {
 
           <div className="absolute bottom-6 left-6 right-6">
 
-            <button className="w-full py-4 rounded-full bg-orange-500 text-white">
+            <a href="#contact" className="w-full py-4 rounded-full bg-orange-500 text-white inline-flex items-center justify-center">
               Contact Us
-            </button>
+            </a>
 
           </div>
         </div>

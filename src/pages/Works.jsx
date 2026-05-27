@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ================= CARD IMAGES ================= */
-
+import scheniderCard from "../assets/tr.png";
 import reconciliationCard from "../assets/tr.png";
 import zeptoCard from "../assets/tr.png";
 import mobileCard from "../assets/tr.png";
@@ -19,6 +19,17 @@ export default function Works() {
   const [index, setIndex] = useState(0);
 
   const projects = [
+        {
+      id: "Schneider",
+      title: "Schneider Electric Industrial Automation growth analysis",
+      desc: "IA Segement growth analysis and forecasting for Schneider Electric's industrial automation division, leveraging historical sales data and market trends to identify growth opportunities and optimize resource allocation.",
+
+      /* CARD IMAGE */
+      cardImage: scheniderCard,
+
+      /* PROJECT PAGE BANNER */
+      bannerImage: reconciliationBanner,
+    },
     {
       id: "reconciliation",
       title: "Transaction Reconciliation System",
