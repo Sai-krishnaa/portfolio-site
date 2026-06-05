@@ -7,7 +7,7 @@ import sql from "../assets/sql.svg";
 import git from "../assets/git.svg";
 import fabric from "../assets/fabric.png";
 import Numpy from "../assets/NumPy.svg";
-import pandas from "../assets/pandas.svg";
+import Pandas from "../assets/Pandas.svg";
 
 import bg from "../assets/bb.png";
 const isMobile = window.innerWidth < 640;
@@ -21,7 +21,7 @@ export default function SkillsSection() {
     r: isMobile ? 290 : 310,
   },
   {
-    icon: pandas,
+    icon: Pandas,
     name: "Pandas",
     angle: 248,
     r: isMobile ? 185 : 280,
