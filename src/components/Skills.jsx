@@ -7,24 +7,67 @@ import sql from "../assets/sql.svg";
 import git from "../assets/git.svg";
 import fabric from "../assets/fabric.png";
 import Numpy from "../assets/NumPy.svg";
+import pandas from "../assets/pandas.svg";
 
 import bg from "../assets/bb.png";
-
+const isMobile = window.innerWidth < 640;
 export default function SkillsSection() {
   // 🔥 LOWER ARC (outer ring)
   const lowerSkills = [
-    { icon: python, name: "Python", angle: 210, r: 310 },
-{ icon: sql, name: "SQL", angle: 248, r: 280 },
-{ icon: fabric, name: "Fabric", angle: 288, r: 280 },
-{ icon: Numpy, name: "Numpy", angle: 333, r: 320 },
-  ];
+  {
+    icon: python,
+    name: "Python",
+    angle: 215,
+    r: isMobile ? 290 : 310,
+  },
+  {
+    icon: pandas,
+    name: "Pandas",
+    angle: 248,
+    r: isMobile ? 185 : 280,
+  },
+  {
+    icon: fabric,
+    name: "Fabric",
+    angle: 292,
+    r: isMobile ? 185 : 280,
+  },
+  {
+    icon: Numpy,
+    name: "Numpy",
+    angle: 325,
+    r: isMobile ? 290 : 320,
+  },
+];
 
   // 🔥 UPPER ARC (inner ring)
-  const upperSkills = [
-    { icon: excel, name: "Excel", angle: 230, r: 370 },
-    { icon: powerbi, name: "Power BI", angle: 271, r: 350 },
-    { icon: git, name: "Git",angle: 310, r: 375 },
-  ];
+const upperSkills = [
+  {
+    icon: excel,
+    name: "Excel",
+    angle: 225,
+    r: isMobile ? 305 : 370,
+  },
+  {
+    icon: powerbi,
+    name: "Power BI",
+    angle: 290,
+    r: isMobile ? 230 : 350,
+  },
+  {
+    icon: sql,
+    name: "SQL",
+    angle: 250,
+    r: isMobile ? 230 : 350,
+  },
+  {
+    icon: git,
+    name: "Git",
+    angle: 315,
+    r: isMobile ? 305 : 375,
+  },
+  
+];
 
   const RADIUS = 300;
   const INNER_RADIUS = 230; // smaller = upper arc
@@ -33,7 +76,9 @@ export default function SkillsSection() {
 
   return (
     <div
-      className="w-[95%] mx-auto relative flex items-start justify-center min-h-[785px] rounded-3xl overflow-hidden pt-16"
+      className="w-[95%] mx-auto relative flex items-start justify-center min-h-[600px] md:min-h-[785px] rounded-3xl overflow-hidden pt-16
+
+"
       style={{
         backgroundImage: `url(${bg})`,
         backgroundSize: "cover",
@@ -41,7 +86,7 @@ export default function SkillsSection() {
       }}
     >
       {/* DARK OVERLAY */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20 pt-40">
+      <div className="absolute top-[58%] md:top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20 pt-20 md:pt-40 w-[90%] md:w-auto">
 
   {/* SMALL TAG */}
   <div className="inline-block px-4 py-1.5 rounded-full bg-orange-700 text-blue text-m mb-4 text-white">
@@ -49,7 +94,7 @@ export default function SkillsSection() {
   </div>
 
   {/* MAIN HEADING */}
-  <h1 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+  <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white leading-tight">
     Turn <span className="text-orange-600"> Data </span>Into<span className="text-orange-600"> Decisions</span> <span> That Matter</span>
   </h1>
 
@@ -62,7 +107,9 @@ export default function SkillsSection() {
   </button>
 </div>
       {/* ORBITS */}
-      <div className="absolute bottom-0 left-0 right-0 z-10" style={{ height: "950px" }}>
+      <div className="absolute bottom-0 left-0 right-0 z-10" style={{
+  height: isMobile ? "1150px" : "950px",
+}}>
 
         {/* 🔥 LOWER ARC */}
         {lowerSkills.map((skill, i) => {
@@ -119,7 +166,8 @@ const yPct = ((CY + r * Math.sin(rad)) / 490) * 100;
 function SkillItem({ skill }) {
   return (
     <div className="flex flex-col items-center gap-1">
-      <div className="w-17 h-17 rounded-full bg-white/10 backdrop-blur border border-blue-400/40 flex items-center justify-center p-2 shadow-lg hover:scale-110 transition">
+      <div className="w-14 h-14 md:w-17 md:h-17 rounded-full bg-white/10 backdrop-blur border border-blue-400/40
+flex items-center justify-center p-2 shadow-lg hover:scale-110 transition">
         <img
           src={skill.icon}
           alt={skill.name}

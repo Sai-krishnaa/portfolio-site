@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -6,7 +6,8 @@ import python from "../assets/python.svg";
 import powerbi from "../assets/power-bi.svg";
 import fabric from "../assets/fabric.png";
 import NumPy from "../assets/NumPy.svg";
-import bg from "../assets/PM.png";
+import dbg from "../assets/emmilm.png";
+import mbg from "../assets/email.png";
 
 const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
@@ -18,11 +19,21 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [bgImage, setBgImage] = useState(mbg);
 
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  useEffect(() => {
+    const updateBackground = () => {
+      setBgImage(window.innerWidth < 640 ? mbg : dbg);
+    };
+
+    updateBackground();
+    window.addEventListener("resize", updateBackground);
+    return () => window.removeEventListener("resize", updateBackground);
+  }, []);
 
   function handleNext(e) {
     e.preventDefault();
@@ -60,12 +71,6 @@ export default function ContactSection() {
     setLoading(true);
 
     try {
-      console.info("Sending contact form to EmailJS", {
-        email: email.trim(),
-        message: message.trim(),
-        to_email: TO_EMAIL,
-      });
-
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
@@ -80,18 +85,12 @@ export default function ContactSection() {
       );
 
       setSuccess(true);
-      setSuccessMessage(
-        TO_EMAIL
-          ? `Your message was sent to ${TO_EMAIL}. Check that inbox for the full message.`
-          : "Your message was sent. Check your configured EmailJS inbox."
-      );
       setStep(1);
       setEmail("");
       setMessage("");
 
       setTimeout(() => {
         setSuccess(false);
-        setSuccessMessage("");
       }, 3500);
     } catch (sendError) {
       console.error("EmailJS send error", sendError);
@@ -106,26 +105,32 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      className="w-[95%] mx-auto relative py-38 overflow-hidden bg-cover bg-center rounded-3xl"
+      className="w-full md:w-[95%] max-w-[1400px] mx-auto relative overflow-hidden bg-cover bg-center rounded-3xl min-h-[560px] sm:min-h-[640px] md:min-h-[710px] py-16 sm:py-20 lg:py-24"
       style={{
-        backgroundImage: `url(${bg})`,
+        backgroundImage: `url(${bgImage})`,
       }}
     >
       {/* OVERLAY */}
       <div className="absolute inset-0" />
 
-      {/* FLOATING ICONS */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <FloatingIcon src={fabric} className="top-10 left-20" />
-        <FloatingIcon src={python} className="top-16 right-20" />
-        <FloatingIcon src={NumPy} className="bottom-20 left-32" />
-        <FloatingIcon src={powerbi} className="bottom-24 right-32" />
-      </div>
 
       {/* CONTENT */}
       <div className="relative z-10 text-center max-w-3xl mx-auto px-4">
+        {/* HEADING ABOVE FORM - mixed color words (white, gray, orange, black) */}
+        <div className="hidden sm:block ">
+          <h2 className="text-lg sm:text-2xl md:text-3xl font-bold">
+            <span className="text-white">Let's</span>{' '}
+            <span className="text-gray-300">connect</span>{' '}
+            <span className="text-black">and</span>{' '}
+            <span className="text-orange-400">Create</span>{' '}
+            <span className="text-orange-400">something</span>{' '}
+            <span className="text-white">real</span>{' '}
+            <span className="text-black">.</span>
+          </h2>
+        </div>
+
         {/* FORM CONTAINER */}
-        <div className="relative mx-auto mb-10 w-full max-w-md h-16">
+        <div className="relative mx-auto mt-27 sm:mt-8 md:mt-10 mb-10 w-full max-w-[92%] md:max-w-[80%] h-12 sm:h-14">
           <AnimatePresence mode="wait">
             {/* STEP 1 */}
             {step === 1 && !success && (
@@ -150,8 +155,8 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-full bg-linear-to-r from-blue-600 to-indigo-600 
-                  text-white text-sm font-medium shadow-lg hover:scale-105 transition"
+                  className="self-end mt-1 px-6 py-1.5 sm:px-7 sm:py-2 rounded-full bg-linear-to-r from-blue-600 to-indigo-600 
+                  text-white text-sm font-medium shadow-lg hover:scale-105 transition min-w-[10px]"
                 >
                   Next
                 </button>
@@ -182,8 +187,8 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  className="px-5 py-2 rounded-full bg-linear-to-r from-blue-600 to-indigo-600 
-                  text-white text-sm font-medium shadow-lg hover:scale-105 transition"
+                  className="self-end mt-1 px-6 py-1.5 sm:px-7 sm:py-2 rounded-full bg-linear-to-r from-blue-600 to-indigo-600 
+                  text-white text-sm font-medium shadow-lg hover:scale-105 transition min-w-[10px]"
                 >
                   Submit
                 </button>
@@ -233,16 +238,9 @@ export default function ContactSection() {
                     </svg>
                   </motion.div>
 
-                  <div className="text-left">
-                    <p className="text-green-700 font-medium text-sm">
-                      Successfully Submitted
-                    </p>
-                    {successMessage && (
-                      <p className="text-slate-600 text-xs mt-1">
-                        {successMessage}
-                      </p>
-                    )}
-                  </div>
+                  <p className="text-green-700 font-medium text-sm">
+                    Successfully Submitted
+                  </p>
                 </div>
               </motion.div>
             )}
@@ -256,15 +254,7 @@ export default function ContactSection() {
         )}
 
         {/* HEADING */}
-        <h1 className="text-3xl md:text-5xl font-bold text-slate-900 leading-tight">
-          Let’s <span className="text-blue-600">connect</span> and create
-          something <span className="text-blue-600">real</span>
-        </h1>
-
-        {/* DESCRIPTION */}
-        <p className="mt-4 text-slate-600 text-sm md:text-base max-w-xl mx-auto">
-          From ideas to execution, we create solutions that drive real impact.
-        </p>
+        
       </div>
     </section>
   );
