@@ -18,6 +18,7 @@ export default function ContactSection() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [success, setSuccess] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -59,6 +60,12 @@ export default function ContactSection() {
     setLoading(true);
 
     try {
+      console.info("Sending contact form to EmailJS", {
+        email: email.trim(),
+        message: message.trim(),
+        to_email: TO_EMAIL,
+      });
+
       await emailjs.send(
         SERVICE_ID,
         TEMPLATE_ID,
@@ -73,12 +80,18 @@ export default function ContactSection() {
       );
 
       setSuccess(true);
+      setSuccessMessage(
+        TO_EMAIL
+          ? `Your message was sent to ${TO_EMAIL}. Check that inbox for the full message.`
+          : "Your message was sent. Check your configured EmailJS inbox."
+      );
       setStep(1);
       setEmail("");
       setMessage("");
 
       setTimeout(() => {
         setSuccess(false);
+        setSuccessMessage("");
       }, 3500);
     } catch (sendError) {
       console.error("EmailJS send error", sendError);
@@ -220,9 +233,16 @@ export default function ContactSection() {
                     </svg>
                   </motion.div>
 
-                  <p className="text-green-700 font-medium text-sm">
-                    Successfully Submitted
-                  </p>
+                  <div className="text-left">
+                    <p className="text-green-700 font-medium text-sm">
+                      Successfully Submitted
+                    </p>
+                    {successMessage && (
+                      <p className="text-slate-600 text-xs mt-1">
+                        {successMessage}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             )}
