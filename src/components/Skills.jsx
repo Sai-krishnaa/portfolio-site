@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import python from "../assets/python.svg";
 import excel from "../assets/excel.svg";
@@ -73,6 +74,7 @@ const upperSkills = [
   const INNER_RADIUS = 230; // smaller = upper arc
   const CX = 400;
   const CY = 490;
+  const navigate = useNavigate();
 
   return (
     <div
@@ -102,7 +104,7 @@ const upperSkills = [
   <p className="text-gray-300 text-sm md:text-base mt-4 max-w-md mx-auto">
     From data cleaning to <span className = "text-orange-600 "> dashboards </span> , these skills power my workflow.
   </p>
-       <button className="mt-6 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-orange-600 hover:text-white transition">
+       <button onClick={() => navigate("/works")} className="mt-6 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-orange-600 hover:text-white transition">
     View My Work →
   </button>
 </div>

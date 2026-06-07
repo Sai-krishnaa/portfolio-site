@@ -8,6 +8,7 @@ import python from "../assets/python.svg"
 import numpy from "../assets/NumPy.svg"
 import git from "../assets/git.svg"
 import fabric from "../assets/fabric.png"
+import pandas from "../assets/Pandas.svg"
 
 
 function DotRed() {
@@ -82,7 +83,7 @@ export default function About() {
             <div className="flex flex-wrap items-center gap-3">
               <div className="inline-flex items-center gap-2 bg-black/90 text-white px-3 py-2 rounded-full text-sm">
                 <span className="inline-block w-2 h-2 bg-green-400 rounded-full" />
-                <span>Dive Into My Work</span>
+                <span>Lets build something amazing together!</span>
               </div>
 
               {/* Skills Row */}
@@ -95,6 +96,7 @@ export default function About() {
     { icon: numpy, name: "NumPy" },
     { icon: fabric, name: "Fabric" },
     { icon: git, name: "Git" },
+    { icon: pandas, name: "Pandas" },
   ].map((skill) => (
     <div
       key={skill.name}
@@ -142,7 +144,9 @@ export default function About() {
               Senior Secondary (12th)
               </h3>
               <p>Venkateswar English Medium School</p>
-              <a className="mt-4 inline-block text-xs text-blue-600" href="#">Access Resume ↗</a>
+              <a className="mt-4 inline-block text-xs text-blue-600" href="#" onClick={() => window.open("/B_SaiKrishna_Data_Analyst_Resume.pdf", "_blank")}>
+                Access Resume ↗
+              </a>
             </div>
 
             <div className="bg-white rounded-2xl shadow-md p-5 flex items-center gap-4">

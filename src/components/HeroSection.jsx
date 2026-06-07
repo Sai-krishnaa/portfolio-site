@@ -6,29 +6,67 @@ import flag from "../assets/flag.png";
 import heroBanner from "../assets/PM.png";   // Desktop
 import heroBannerr from "../assets/M.png";  // Mobile
 
-import linkedin from "../assets/linkedin.svg";
-import github from "../assets/github.svg";
-import leetcode from "../assets/leetcode.svg";
-import hackerank from "../assets/hackerank.svg";
+// desktop Banners
+import linkedin from "../assets/linkedin_logo.png";
+import leetcode from "../assets/leetcode_logo.png";
+import hackerrank from "../assets/hackerrank_logo.png";
+import github from "../assets/github_logo.png";
+
+// mobile Banners
+import linkedinm from "../assets/linkedin_logoo.png";
+import leetcodem from "../assets/leetcode_logoo.png";
+import hackerrankm from "../assets/hackerrank_logoo.png";
+import githubm from "../assets/github_logoo.png";
 
 /* ===================== SOCIAL ===================== */
-function SocialPill({ icon, platform, username, url }) {
+function SocialBanner({
+  desktopImage,
+  mobileImage,
+  url,
+  alt,
+}) {
   return (
-    <a href={url} target="_blank" rel="noopener noreferrer"
-      className="flex items-center gap-4 rounded-2xl bg-white px-4 py-3 shadow">
-      
-      <div className="w-10 h-10 border flex items-center justify-center rounded-full">
-        <img src={icon} alt={platform} className="w-5 h-5" />
-      </div>
+    <a
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="
+        block overflow-hidden
+        rounded-[20px]
+        border border-gray-100
+        shadow-sm
+        hover:shadow-md
+        transition-all duration-300
+      "
+    >
+      {/* Desktop Banner */}
+      <img
+        src={desktopImage}
+        alt={alt}
+        className="
+          hidden md:block
+          w-full
+          h-[78px]
+          object-cover
+          hover:scale-105
+          transition-transform duration-500
+        "
+      />
 
-      <div>
-        <div className="text-sm font-semibold">{username}</div>
-        <div className="text-xs text-gray-500">{platform}</div>
-      </div>
+      {/* Mobile Banner */}
+      <img
+        src={mobileImage}
+        alt={alt}
+        className="
+          block md:hidden
+          w-full
+          h-[90px]
+          object-cover
+        "
+      />
     </a>
   );
 }
-
 /* ===================== HERO ===================== */
 export default function HeroSection() {
   const navigate = useNavigate();
@@ -53,7 +91,7 @@ export default function HeroSection() {
       <main className="px-4 md:px-6 pb-14">
         <section className="mt-6 w-full rounded-4xl bg-white shadow-lg p-1">
           
-          <div className="relative rounded-[28px] overflow-hidden min-h-[460px] md:min-h-[560px]">
+          <div className="relative rounded-[31px] overflow-hidden min-h-[460px] md:min-h-[540px]">
 
             {/* DESKTOP IMAGE */}
             <img
@@ -141,17 +179,38 @@ export default function HeroSection() {
           </div>
 
           {/* SOCIAL */}
-          <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            <SocialPill icon={linkedin} platform="LinkedIn" username="B Sai Krishna"
-              url="https://www.linkedin.com/in/saikrishnacodes/" />
-            <SocialPill icon={github} platform="GitHub" username="saikrishna"
-              url="https://github.com/Sai-krishnaa" />
-            <SocialPill icon={leetcode} platform="LeetCode" username="SaiKrishna"
-              url="https://leetcode.com/u/Code-Sai/" />
-            <SocialPill icon={hackerank} platform="HackerRank" username="saikrishna_dev"
-              url="https://www.hackerrank.com/profile/saikrishna34326" />
-          </div>
+          {/* SOCIAL */}
+<div className="mt-4 mb-1 grid grid-cols-2 md:grid-cols-4 gap-3">
 
+  <SocialBanner
+    desktopImage={linkedin}
+    mobileImage={linkedinm}
+    url="https://www.linkedin.com/in/saikrishnacodes/"
+    alt="LinkedIn"
+  />
+
+  <SocialBanner
+    desktopImage={github}
+    mobileImage={githubm}
+    url="https://github.com/Sai-krishnaa"
+    alt="GitHub"
+  />
+
+  <SocialBanner
+    desktopImage={leetcode}
+    mobileImage={leetcodem}
+    url="https://leetcode.com/u/Code-Sai/"
+    alt="LeetCode"
+  />
+
+  <SocialBanner
+    desktopImage={hackerrank}
+    mobileImage={hackerrankm}
+    url="https://www.hackerrank.com/profile/saikrishna34326"
+    alt="HackerRank"
+  />
+
+</div>
         </section>
       </main>
     </div>
