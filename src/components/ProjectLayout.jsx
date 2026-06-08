@@ -62,14 +62,14 @@ export default function ProjectLayout({
 
           <button
             onClick={() => setMenuOpen(prev => !prev)}
-            className="w-11 h-11 md:w-12 md:h-12 rounded-full bg-red-600 text-white
+            className="group w-11 h-11 md:w-12 md:h-12 rounded-full bg-orange-600 text-white
                        flex items-center justify-center text-xl md:text-2xl
-                       transition-transform duration-200 hover:scale-105"
+                       transition duration-500"
           >
             <span
               className={`inline-block transition-transform duration-300 ${
-                menuOpen ? "rotate-180" : ""
-              }`}
+                menuOpen ? "rotate-45" : ""
+              } group-hover:rotate-45`}
             >
               ↗
             </span>
@@ -90,7 +90,7 @@ export default function ProjectLayout({
             <div className="flex justify-end mb-8">
               <button
                 onClick={() => setMenuOpen(false)}
-                className="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center"
+                className="w-10 h-10 rounded-full bg-orange-600 text-white flex items-center justify-center"
               >
                 ↗
               </button>
@@ -143,12 +143,12 @@ export default function ProjectLayout({
           )}
 
           {/* PROJECT INFO */}
-          <div className="max-w-6xl mx-auto mb-10">
+          <div className="max-w-7xl mx-auto mb-10 px-4 sm:px-0">
             <p className="text-sm text-gray-500 mb-2">About the project</p>
             <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3">
               {projectTitle}
             </h2>
-            <p className="text-gray-600 text-lg max-w-3xl">
+            <p className="text-gray-600 text-lg mx-auto w-full max-w-md md:max-w-6xl lg:max-w-7xl">
               {projectDescription}
             </p>
           </div>

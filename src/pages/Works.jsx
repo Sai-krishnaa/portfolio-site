@@ -87,7 +87,7 @@ export default function Works() {
             className="flex items-center gap-3 text-gray-700 hover:text-black transition font-medium"
           >
 
-            <span className="w-11 h-11 rounded-full bg-orange-100 text-orange-600 flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-300">
+            <span className="w-11 h-11 rounded-full bg-black text-white flex items-center justify-center hover:bg-orange-500 hover:text-white transition-all duration-300 ">
               ←
             </span>
 
@@ -109,13 +109,13 @@ export default function Works() {
 
             <div className="space-y-5">
 
-              <span className="text-xs tracking-widest text-white font-semibold uppercase bg-orange-500 px-4 py-2 rounded-full shadow-lg shadow-orange-500/30">
+              <span className="text-xs tracking-widest text-white font-semibold uppercase bg-black hover:bg-orange-500 px-4 py-2 rounded-full transition-all duration-500 cursor-pointer">
 
                 My Work
 
               </span>
 
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight max-w-3xl">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold leading-[1.05] tracking-tight max-w-3xl mt-4">
 
                 Built to solve
                 <br />
@@ -126,7 +126,9 @@ export default function Works() {
 
                 <br />
 
-                Problems Every Day
+                <span className="text-gray-400">
+                  Problems Every Day
+                </span>
 
               </h2>
 
@@ -149,14 +151,14 @@ export default function Works() {
 
               <button
                 onClick={prev}
-                className="w-12 h-12 rounded-full bg-orange-100 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center"
+                className="w-12 h-12 rounded-full bg-black text-white hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center"
               >
                 ←
               </button>
 
               <button
                 onClick={next}
-                className="w-12 h-12 rounded-full bg-orange-100 text-orange-600 hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center"
+                className="w-12 h-12 rounded-full bg-black text-white hover:bg-orange-500 hover:text-white transition-all duration-300 flex items-center justify-center"
               >
                 →
               </button>
@@ -173,7 +175,7 @@ export default function Works() {
                   onClick={() => setIndex(i)}
                   className={`h-1.5 rounded-full transition-all cursor-pointer ${
                     i === index
-                      ? "w-8 bg-orange-500"
+                      ? "w-8 bg-gray-500"
                       : "w-2 bg-gray-300"
                   }`}
                 />
@@ -335,22 +337,22 @@ function ProjectSlide({
       }}
     >
 
-      {/* ORANGE OVERLAY */}
+      {/* ORANGE OVERLAY
 
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-orange-500/10 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-orange-500/10 pointer-events-none" /> */}
 
       {/* HOVER OVERLAY */}
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
         className="absolute inset-0 bg-black/60 pointer-events-none"
-      />
+      /> */}
 
       {/* SWIPE HINT */}
 
-      {showHint && (
+      {/* {showHint && (
 
         <motion.div
           className="absolute top-28 right-8 z-30 pointer-events-none flex items-center gap-3"
@@ -371,7 +373,7 @@ function ProjectSlide({
           </div>
 
         </motion.div>
-      )}
+      )} */}
 
       {/* TOP BAR */}
 
@@ -417,17 +419,9 @@ function ProjectSlide({
 
       <div className="space-y-4 relative z-20">
 
-        <h2 className="text-3xl md:text-5xl font-bold leading-tight max-w-xl">
+        
 
-          {project.title}
-
-        </h2>
-
-        <p className="text-white/80 text-lg max-w-lg leading-relaxed">
-
-          {project.desc}
-
-        </p>
+        
 
         <button
           onClick={() =>
@@ -437,7 +431,7 @@ function ProjectSlide({
               },
             })
           }
-          className="mt-2 px-6 py-3 bg-orange-500 text-white font-semibold rounded-full hover:bg-orange-600 transition-all duration-300 shadow-lg shadow-orange-500/30"
+          className="mt-2 px-6 py-3 bg-black text-white font-semibold rounded-full hover:bg-orange-600 transition-all duration-300"
         >
 
           View Project →

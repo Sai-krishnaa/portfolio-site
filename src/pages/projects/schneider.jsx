@@ -1,6 +1,6 @@
 import React from "react";
 import ProjectLayout from "../../components/ProjectLayout";
-import r from "../../assets/r.png";
+import r from "../../assets/schbg.png";
 import sql from "../../assets/sql.svg";
 import excel from "../../assets/excel.svg";
 import python from "../../assets/python.svg";
@@ -103,12 +103,12 @@ SUMX(Transactions, [Gateway_Amount] - [Bank_Amount])`,
       />
     </div>
 
-    <div className="pt-6 space-y-3 max-w-4xl mx-auto text-center pb-8 px-4">
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-black bg-linear-to-r from-gray-900 via-gray-800 to-gray-600 bg-clip-text text-transparent leading-[1.1] tracking-tight">
-        Schneider Electric Industrial Automation growth analysis
+    <div className="pt-6 space-y-3 max-w-6xl mx-auto text-center pb-8 px-4 w-full">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-black bg-linear-to-r from-gray-900 via-gray-800 to-gray-600 bg-clip-text text-transparent leading-[1.1] tracking-tight md:whitespace-nowrap mx-auto break-words whitespace-normal">
+        Schneider Electric Industrial Automation growth
       </h1>
 
-      <p className="text-gray-500 text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+      <p className="text-gray-700 text-base sm:text-lg md:text-xl max-w-4xl mx-auto leading-relaxed break-words whitespace-normal">
         IA Segement growth analysis and forecasting for Schneider Electric's industrial automation division, leveraging historical sales data and market trends to identify growth opportunities and optimize resource allocation.
       </p>
     </div>

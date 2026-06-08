@@ -128,6 +128,7 @@ function ProjectCard({ project }) {
               transition-transform
               duration-500
               group-hover:rotate-45
+              hover:bg-orange-500
             "
             >
               ↗
